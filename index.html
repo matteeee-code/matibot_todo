@@ -149,6 +149,11 @@
              cursor:pointer;transition:border-color .15s,color .15s;}
     .add-btn:hover{border-color:var(--accent);color:var(--accent);}
 
+    /* ── drag & drop ── */
+    .block{cursor:grab;}
+    .block.dragging{opacity:.4;cursor:grabbing;}
+    .stack.drag-over{background:rgba(99,102,241,.07);border-radius:8px;outline:2px dashed var(--matt);}
+
     /* ━━ MIDTERM ━━ */
     .task-list{display:flex;flex-direction:column;gap:10px;}
     .task-card{background:var(--surface);border:1.5px solid var(--border);
@@ -472,6 +477,8 @@ function renderBoard() {
       p.tasks.forEach(t => {
         const b = document.createElement("div");
         b.className = `block ${pc(t.priority)}`;
+        b.dataset.taskId = t.id;
+        b.dataset.colId  = p.id;
         b.innerHTML = `
           <div class="btop">
             <div class="btitle">${t.emoji} ${t.title}</div>
@@ -518,6 +525,8 @@ function renderBoard() {
     UNASSIGNED.forEach(t => {
       const b = document.createElement("div");
       b.className = `block ${pc(t.priority)}`;
+      b.dataset.taskId = t.id;
+      b.dataset.colId  = "unassigned";
       b.innerHTML = `
         <div class="btop">
           <div class="btitle">${t.emoji} ${t.title}</div>
@@ -701,7 +710,76 @@ function switchPage(id,btn){
   if(btn) btn.classList.add("active");
 }
 
-function renderAll(){ renderBoard(); renderMidterm(); renderReport(); }
+function renderAll(){ renderBoard(); renderMidterm(); renderReport(); initDragDrop(); }
+
+// ━━ DRAG & DROP ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// State: { taskId, sourceColId }
+// sourceColId: team member id OR "unassigned"
+let dragState = null;
+
+function initDragDrop() {
+  // attach drag listeners to all .block elements
+  document.querySelectorAll(".block").forEach(block => {
+    block.setAttribute("draggable","true");
+    block.addEventListener("dragstart", e => {
+      const taskId = block.dataset.taskId;
+      const col    = block.dataset.colId;
+      dragState = { taskId, col };
+      block.classList.add("dragging");
+      e.dataTransfer.effectAllowed = "move";
+    });
+    block.addEventListener("dragend", () => {
+      block.classList.remove("dragging");
+      document.querySelectorAll(".stack.drag-over").forEach(s=>s.classList.remove("drag-over"));
+    });
+  });
+
+  // attach drop listeners to all .stack elements
+  document.querySelectorAll(".stack").forEach(stack => {
+    stack.addEventListener("dragover", e => {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = "move";
+      stack.classList.add("drag-over");
+    });
+    stack.addEventListener("dragleave", () => stack.classList.remove("drag-over"));
+    stack.addEventListener("drop", e => {
+      e.preventDefault();
+      stack.classList.remove("drag-over");
+      if(!dragState) return;
+
+      const targetColId = stack.id.replace("stk-",""); // "matt"|"jiun"|"new1"|"unassigned"
+      const { taskId, col: srcColId } = dragState;
+      dragState = null;
+
+      if(srcColId === targetColId) return; // same column — no-op
+
+      // Remove task from source
+      let task = null;
+      if(srcColId === "unassigned") {
+        const idx = UNASSIGNED.findIndex(t=>t.id===taskId);
+        if(idx===-1) return;
+        [task] = UNASSIGNED.splice(idx,1);
+      } else {
+        const srcP = TEAM.find(p=>p.id===srcColId);
+        if(!srcP) return;
+        const idx = srcP.tasks.findIndex(t=>t.id===taskId);
+        if(idx===-1) return;
+        [task] = srcP.tasks.splice(idx,1);
+      }
+
+      // Add to target
+      if(targetColId === "unassigned") {
+        UNASSIGNED.push({...task, id:"u"+Date.now()});
+      } else {
+        const tgtP = TEAM.find(p=>p.id===targetColId);
+        if(!tgtP) return;
+        tgtP.tasks.push({...task, id:"t"+Date.now()});
+      }
+
+      renderAll();
+    });
+  });
+}
 
 const d=new Date();
 document.getElementById("nav-date").textContent=d.toLocaleDateString("ko-KR",{month:"long",day:"numeric",weekday:"short"});
