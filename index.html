@@ -37,7 +37,7 @@
     .nav-date{font-size:11px;color:var(--dim);}
 
     /* PAGES */
-    .page{display:none;padding:20px 20px 80px;}
+    .page{display:none;padding:16px 16px 80px;}
     .page.active{display:block;}
     .ph{margin-bottom:20px;}
     .ph h2{font-size:19px;font-weight:800;letter-spacing:-.03em;margin-bottom:3px;}
@@ -49,11 +49,11 @@
     .legd{width:16px;height:12px;border-radius:3px;}
 
     /* ━━ DAILY LAYOUT ━━ */
-    .daily-layout{display:grid;grid-template-columns:1fr 220px;gap:16px;align-items:start;}
-    @media(max-width:900px){.daily-layout{grid-template-columns:1fr;}}
+    .daily-layout{display:grid;grid-template-columns:1fr 210px;gap:14px;align-items:start;}
+    @media(max-width:860px){.daily-layout{grid-template-columns:1fr;}}
 
-    /* BOARD */
-    .board{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px;align-items:start;}
+    /* BOARD — 컬럼 꽉 채우기 */
+    .board{display:grid;grid-template-columns:repeat(auto-fill,minmax(0,1fr));gap:10px;align-items:start;}
 
     /* GOALS PANEL */
     .goals-panel{background:var(--surface);border:1.5px solid var(--border);
