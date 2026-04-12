@@ -49,8 +49,7 @@
 
     /* LEGEND */
     .legend{display:flex;gap:12px;margin-bottom:20px;flex-wrap:wrap;align-items:center;}
-    .leg{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--dim);
-         font-weight:600;}
+    .leg{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--dim);font-weight:600;}
     .legd{width:18px;height:14px;border-radius:3px;}
 
     /* ━━ BOARD ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
@@ -58,50 +57,34 @@
     @media(max-width:1100px){.board{grid-template-columns:repeat(3,1fr);}}
     @media(max-width:680px){.board{grid-template-columns:repeat(2,1fr);}}
 
-    /* ── Person column ── */
     .person-col{background:var(--surface);border:1.5px solid var(--border);
                 border-radius:14px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.05);}
-    .person-col.unassigned-col{border-style:dashed;border-color:var(--border2);
-                               background:var(--surface2);}
+    .person-col.unassigned-col{border-style:dashed;border-color:var(--border2);background:var(--surface2);}
 
     .person-head{padding:14px 14px 12px;border-bottom:1px solid var(--border);}
     .pname{font-size:14px;font-weight:800;margin-bottom:2px;}
-    .prole{font-size:9px;color:var(--dim);letter-spacing:.1em;text-transform:uppercase;
-           font-weight:600;}
+    .prole{font-size:9px;color:var(--dim);letter-spacing:.1em;text-transform:uppercase;font-weight:600;}
     .phead-meta{display:flex;align-items:center;gap:8px;margin-top:8px;}
     .pload-num{font-size:11px;font-weight:700;color:var(--dim);}
-    .pover{font-size:9px;color:#fff;font-weight:700;
-           background:var(--over);border-radius:20px;
-           padding:2px 8px;display:none;}
+    .pover{font-size:9px;color:#fff;font-weight:700;background:var(--over);border-radius:20px;padding:2px 8px;display:none;}
     .overloaded .pload-num{color:var(--over);}
     .overloaded .pover{display:inline-block;}
 
-    /* sidebar + blocks row */
     .col-body{display:flex;gap:0;}
 
-    /* ★ LEGO colour sidebar — fat bars ★ */
-    .col-sidebar{
-      width:22px;flex-shrink:0;
-      display:flex;flex-direction:column;gap:3px;
-      padding:8px 0 8px 8px;
-    }
-    .sb-seg{
-      border-radius:5px;flex:1;
-      min-height:44px;           /* ← 충분한 높이로 레고 벽돌 느낌 */
-      transition:opacity .2s;
-    }
+    /* LEGO sidebar */
+    .col-sidebar{width:22px;flex-shrink:0;display:flex;flex-direction:column;gap:3px;padding:8px 0 8px 8px;}
+    .sb-seg{border-radius:5px;flex:1;min-height:44px;transition:opacity .2s;}
     .sb-seg.p1{background:var(--p1);}
     .sb-seg.p2{background:var(--p2);}
     .sb-seg.p3{background:var(--p3);}
     .sb-seg.p4{background:var(--p4);}
     .sb-seg.empty{background:var(--xdim);opacity:.25;}
 
-    /* block list */
     .stack{flex:1;display:flex;flex-direction:column;gap:4px;padding:8px 8px 8px 5px;}
 
     .block{border-radius:9px;padding:10px 12px;cursor:pointer;
-           position:relative;transition:transform .12s,box-shadow .12s;
-           border-left:none;}
+           position:relative;transition:transform .12s,box-shadow .12s;}
     .block:hover{transform:translateY(-1px);box-shadow:0 3px 10px rgba(0,0,0,.1);}
     .block.open{box-shadow:0 4px 14px rgba(0,0,0,.12);}
     .block.bp1{background:var(--p1bg);border:1.5px solid var(--p1border);}
@@ -111,24 +94,53 @@
 
     .btop{display:flex;align-items:flex-start;justify-content:space-between;gap:4px;}
     .btitle{font-size:11px;font-weight:700;line-height:1.4;color:var(--text);}
-    .bemoji{font-size:12px;flex-shrink:0;}
     .bdue{font-size:9px;color:var(--dim);margin-top:3px;font-weight:600;}
     .bdue.urgent{color:var(--p1);}
     .bdue.soon{color:var(--p2);}
 
     .bdetail{display:none;margin-top:9px;padding-top:9px;
-             border-top:1px solid var(--border);font-size:10px;
-             color:var(--dim);line-height:1.7;}
+             border-top:1px solid var(--border);font-size:10px;color:var(--dim);line-height:1.7;}
     .block.open .bdetail{display:block;}
     .bactions{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;}
     .bbtn{font-size:9px;font-weight:700;letter-spacing:.04em;padding:4px 10px;
           border-radius:20px;cursor:pointer;border:1.5px solid;transition:background .15s;}
     .bbtn-collab{background:#fffbeb;color:#d97706;border-color:#fcd34d;}
-    .bbtn-collab:hover{background:#fef3c7;}
     .bbtn-mid{background:#faf5ff;color:#7c3aed;border-color:#c4b5fd;}
-    .bbtn-mid:hover{background:#ede9fe;}
     .bbtn-daily{background:#eff6ff;color:#2563eb;border-color:#bfdbfe;}
-    .bbtn-daily:hover{background:#dbeafe;}
+
+    /* ── priority toggle ── */
+    .p-toggle-wrap{position:relative;display:inline-block;}
+    .pbadge{display:inline-block;font-size:8px;font-weight:800;letter-spacing:.04em;
+            border-radius:4px;padding:2px 7px;cursor:pointer;user-select:none;}
+    .pbadge.p1{background:var(--p1);color:#fff;}
+    .pbadge.p2{background:var(--p2);color:#fff;}
+    .pbadge.p3{background:var(--p3);color:#000;}
+    .pbadge.p4{background:var(--p4);color:#fff;}
+    .p-dropdown{display:none;position:absolute;right:0;top:calc(100% + 4px);
+                background:var(--surface);border:1.5px solid var(--border2);
+                border-radius:10px;padding:4px;z-index:200;box-shadow:0 4px 16px rgba(0,0,0,.1);
+                min-width:100px;}
+    .p-dropdown.open{display:block;}
+    .p-option{display:flex;align-items:center;gap:7px;padding:6px 10px;border-radius:7px;
+              cursor:pointer;font-size:11px;font-weight:600;transition:background .1s;}
+    .p-option:hover{background:var(--surface2);}
+    .p-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+
+    /* ── person select dropdown (assign/move) ── */
+    .person-select-overlay{display:none;position:fixed;inset:0;z-index:400;background:rgba(0,0,0,.3);}
+    .person-select-overlay.open{display:flex;align-items:center;justify-content:center;}
+    .person-select-box{background:var(--surface);border-radius:16px;padding:20px;
+                       box-shadow:0 8px 32px rgba(0,0,0,.18);min-width:220px;max-width:300px;width:90%;}
+    .ps-title{font-size:13px;font-weight:800;margin-bottom:14px;color:var(--text);}
+    .ps-option{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;
+               cursor:pointer;transition:background .1s;margin-bottom:4px;}
+    .ps-option:hover{background:var(--surface2);}
+    .ps-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0;}
+    .ps-name{font-size:13px;font-weight:700;}
+    .ps-role{font-size:10px;color:var(--dim);}
+    .ps-cancel{margin-top:8px;text-align:center;font-size:11px;color:var(--dim);
+               cursor:pointer;padding:8px;border-radius:8px;}
+    .ps-cancel:hover{background:var(--surface2);}
 
     .empty-slot{border:1.5px dashed var(--border2);border-radius:9px;
                 padding:16px;text-align:center;font-size:10px;color:var(--xdim);}
@@ -137,15 +149,7 @@
              cursor:pointer;transition:border-color .15s,color .15s;}
     .add-btn:hover{border-color:var(--accent);color:var(--accent);}
 
-    /* priority badge */
-    .pbadge{display:inline-block;font-size:8px;font-weight:800;
-            letter-spacing:.06em;border-radius:4px;padding:1px 6px;margin-left:4px;}
-    .pbadge.p1{background:var(--p1);color:#fff;}
-    .pbadge.p2{background:var(--p2);color:#fff;}
-    .pbadge.p3{background:var(--p3);color:#000;}
-    .pbadge.p4{background:var(--p4);color:#fff;}
-
-    /* ━━ MIDTERM PAGE ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ━━ MIDTERM ━━ */
     .task-list{display:flex;flex-direction:column;gap:10px;}
     .task-card{background:var(--surface);border:1.5px solid var(--border);
                border-radius:12px;padding:16px;display:flex;align-items:flex-start;
@@ -162,76 +166,68 @@
               background:var(--surface2);border:1px solid var(--border);}
     .tc-due{font-size:10px;color:var(--dim);}
     .tc-detail{display:none;margin-top:12px;padding-top:12px;
-               border-top:1px solid var(--border);font-size:12px;
-               color:var(--dim);line-height:1.7;}
-    .tc-movebtn{font-size:10px;font-weight:700;margin-top:8px;padding:5px 12px;
+               border-top:1px solid var(--border);font-size:12px;color:var(--dim);line-height:1.7;}
+    .tc-movebtn{font-size:10px;font-weight:700;margin-top:8px;padding:5px 14px;
                 border-radius:20px;background:var(--text);color:#fff;
                 border:none;cursor:pointer;display:inline-block;}
 
-    /* ━━ REPORT PAGE ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ━━ REPORT ━━ */
     .report-section{margin-bottom:28px;}
-    .rs-title{font-size:11px;letter-spacing:.1em;text-transform:uppercase;
-              font-weight:700;margin-bottom:12px;
-              padding-bottom:8px;border-bottom:1.5px solid var(--border);}
-    .report-item{background:var(--surface);border:1.5px solid var(--border);
-                 border-radius:10px;padding:12px 14px;margin-bottom:8px;
-                 display:flex;align-items:center;gap:12px;transition:box-shadow .15s;}
-    .report-item:hover{box-shadow:0 2px 6px rgba(0,0,0,.06);}
+    .rs-title{font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;
+              margin-bottom:12px;padding-bottom:8px;border-bottom:1.5px solid var(--border);}
+    .report-item{background:var(--surface);border:1.5px solid var(--border);border-radius:10px;
+                 padding:12px 14px;margin-bottom:8px;display:flex;align-items:center;gap:12px;}
     .ri-check{width:20px;height:20px;border-radius:5px;border:2px solid var(--border2);
-              cursor:pointer;flex-shrink:0;display:flex;align-items:center;
-              justify-content:center;font-size:11px;transition:all .15s;}
+              cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;
+              font-size:11px;transition:all .15s;}
     .ri-check.checked{background:var(--safe);border-color:var(--safe);color:#fff;}
     .ri-text{flex:1;}
     .ri-title{font-size:12px;font-weight:700;margin-bottom:2px;color:var(--text);}
     .ri-owner{font-size:10px;color:var(--dim);}
 
-    /* ━━ ADMIN PAGE ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ━━ ADMIN ━━ */
     .admin-lock{text-align:center;padding:60px 20px;}
     .admin-lock h3{font-size:20px;font-weight:800;margin-bottom:8px;}
     .admin-lock p{font-size:12px;color:var(--dim);margin-bottom:24px;}
     .pin-row{display:flex;gap:10px;justify-content:center;margin-bottom:18px;}
-    .pin-dot{width:14px;height:14px;border-radius:50%;
-             background:var(--border2);transition:background .2s;}
+    .pin-dot{width:14px;height:14px;border-radius:50%;background:var(--border2);transition:background .2s;}
     .pin-dot.filled{background:var(--text);}
-    .pin-input{background:var(--surface);border:2px solid var(--border2);
-               color:var(--text);border-radius:10px;padding:12px 18px;
-               font-size:16px;letter-spacing:.5em;text-align:center;
-               outline:none;width:170px;}
+    .pin-input{background:var(--surface);border:2px solid var(--border2);color:var(--text);
+               border-radius:10px;padding:12px 18px;font-size:16px;letter-spacing:.5em;
+               text-align:center;outline:none;width:170px;}
     .pin-input:focus{border-color:var(--text);}
-    .unlock-btn{display:block;margin:12px auto 0;padding:11px 30px;
-                background:var(--text);color:#fff;font-weight:800;
-                font-size:12px;border:none;border-radius:10px;cursor:pointer;}
-
     .admin-content{display:none;}
     .admin-content.unlocked{display:block;}
-
-    .eval-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
-               gap:14px;margin-bottom:28px;}
-    .eval-card{background:var(--surface);border:1.5px solid var(--border);
-               border-radius:14px;padding:18px;}
+    .eval-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-bottom:28px;}
+    .eval-card{background:var(--surface);border:1.5px solid var(--border);border-radius:14px;padding:18px;}
     .eval-name{font-size:15px;font-weight:800;margin-bottom:2px;}
-    .eval-role{font-size:10px;color:var(--dim);margin-bottom:16px;
-               letter-spacing:.08em;text-transform:uppercase;}
+    .eval-role{font-size:10px;color:var(--dim);margin-bottom:16px;letter-spacing:.08em;text-transform:uppercase;}
     .eval-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
     .eval-label{font-size:10px;color:var(--dim);width:54px;flex-shrink:0;font-weight:600;}
     .eval-stars{display:flex;gap:3px;}
     .star{font-size:16px;cursor:pointer;color:var(--xdim);transition:color .15s;}
     .star.on{color:#f59e0b;}
     .eval-note{width:100%;background:var(--surface2);border:1.5px solid var(--border2);
-               color:var(--text);border-radius:8px;padding:8px 10px;
-               font-size:11px;resize:none;outline:none;margin-top:8px;font-family:inherit;}
+               color:var(--text);border-radius:8px;padding:8px 10px;font-size:11px;
+               resize:none;outline:none;margin-top:8px;font-family:inherit;}
     .eval-note:focus{border-color:var(--text);}
-    .eval-save{font-size:10px;font-weight:700;padding:5px 14px;margin-top:8px;
-               border-radius:20px;background:var(--text);color:#fff;border:none;
-               cursor:pointer;letter-spacing:.04em;}
-    .admin-notice{background:#fff7ed;border:1.5px solid #fed7aa;
-                  border-radius:10px;padding:12px 16px;font-size:11px;
-                  color:#c2410c;margin-bottom:20px;line-height:1.7;}
+    .eval-save{font-size:10px;font-weight:700;padding:5px 14px;margin-top:8px;border-radius:20px;
+               background:var(--text);color:#fff;border:none;cursor:pointer;}
+    .admin-notice{background:#fff7ed;border:1.5px solid #fed7aa;border-radius:10px;
+                  padding:12px 16px;font-size:11px;color:#c2410c;margin-bottom:20px;line-height:1.7;}
   </style>
 </head>
 <body>
 
-<!-- NAV -->
+<!-- ── 담당자 선택 오버레이 (전역) ── -->
+<div class="person-select-overlay" id="person-overlay" onclick="closePersonSelect()">
+  <div class="person-select-box" onclick="event.stopPropagation()">
+    <div class="ps-title" id="ps-title">담당자 선택</div>
+    <div id="ps-options"></div>
+    <div class="ps-cancel" onclick="closePersonSelect()">취소</div>
+  </div>
+</div>
+
 <nav>
   <div class="nav-brand">DARI · Board</div>
   <button class="nav-btn active" onclick="switchPage('daily',this)">🧱 데일리</button>
@@ -242,25 +238,22 @@
   <div class="nav-date" id="nav-date"></div>
 </nav>
 
-<!-- ━━ DAILY PAGE ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<!-- DAILY -->
 <div class="page active" id="page-daily">
   <div class="ph">
     <h2>🧱 데일리 블록보드</h2>
     <p>각자 잡고 있는 블록 총량 — 좌측 바 색깔로 우선순위 한눈에 파악</p>
   </div>
-
   <div class="legend">
     <div class="leg"><div class="legd" style="background:var(--p1)"></div>P1 긴급</div>
     <div class="leg"><div class="legd" style="background:var(--p2)"></div>P2 중요</div>
     <div class="leg"><div class="legd" style="background:var(--p3)"></div>P3 이번주</div>
     <div class="leg"><div class="legd" style="background:var(--p4)"></div>P4 여유</div>
-    <div class="leg"><div class="legd" style="background:var(--xdim);opacity:.4"></div>빈 슬롯</div>
   </div>
-
   <div class="board" id="board"></div>
 </div>
 
-<!-- ━━ MIDTERM PAGE ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<!-- MIDTERM -->
 <div class="page" id="page-midterm">
   <div class="ph">
     <h2>📅 중장기 과제</h2>
@@ -269,7 +262,7 @@
   <div class="task-list" id="midterm-list"></div>
 </div>
 
-<!-- ━━ REPORT PAGE ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<!-- REPORT -->
 <div class="page" id="page-report">
   <div class="ph">
     <h2>📧 데일리 리포트</h2>
@@ -278,16 +271,14 @@
   <div id="report-content"></div>
 </div>
 
-<!-- ━━ ADMIN PAGE ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<!-- ADMIN -->
 <div class="page" id="page-admin">
   <div class="admin-lock" id="admin-lock">
     <h3>🔐 관리자 전용</h3>
     <p>Matt 전용 페이지입니다. PIN을 입력해주세요.</p>
     <div class="pin-row" id="pin-dots">
-      <div class="pin-dot" id="pd0"></div>
-      <div class="pin-dot" id="pd1"></div>
-      <div class="pin-dot" id="pd2"></div>
-      <div class="pin-dot" id="pd3"></div>
+      <div class="pin-dot" id="pd0"></div><div class="pin-dot" id="pd1"></div>
+      <div class="pin-dot" id="pd2"></div><div class="pin-dot" id="pd3"></div>
     </div>
     <input class="pin-input" id="pin-input" type="password" maxlength="4"
            placeholder="••••" oninput="checkPin(this.value)" autocomplete="off"/>
@@ -295,18 +286,14 @@
     <small style="color:var(--xdim);font-size:10px;">기본 PIN: 1234</small>
   </div>
   <div class="admin-content" id="admin-content">
-    <div class="ph"><h2>🔐 관리자 대시보드</h2>
-      <p>팀원 업무 평가 · 피드백 관리 — Matt 전용</p></div>
-    <div class="admin-notice">
-      ⚠️ 이 페이지의 내용은 팀원에게 공개되지 않습니다. 솔직하게 기록하세요.
-    </div>
+    <div class="ph"><h2>🔐 관리자 대시보드</h2><p>팀원 업무 평가 · 피드백 관리 — Matt 전용</p></div>
+    <div class="admin-notice">⚠️ 이 페이지의 내용은 팀원에게 공개되지 않습니다. 솔직하게 기록하세요.</div>
     <div class="eval-grid" id="eval-grid"></div>
   </div>
 </div>
 
 <script>
 // ━━ DATA ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-// priority: 1=긴급(red) 2=중요(orange) 3=이번주(yellow) 4=여유(green)
 const TEAM = [
   { id:"matt", name:"Matt", role:"대표", color:"var(--matt)", maxBlocks:5,
     tasks:[
@@ -335,7 +322,6 @@ const TEAM = [
   { id:"new3", name:"신규 C", role:"입사 예정", color:"var(--new3)", maxBlocks:5, tasks:[] },
 ];
 
-// 미배정 태스크 열
 const UNASSIGNED = [
   { id:"u1",emoji:"🖼️",title:"인스타 콘텐츠 캘린더",due:"조율 필요",urgency:"soon",priority:2,
     detail:"4~5월 인스타그램 포스팅 스케줄. 담당자 배정 필요." },
@@ -362,30 +348,110 @@ const DAILY_REPORT = [
   { title:"운송비 Google API 권한 설정", owner:"Jiun", time:"이번주 내", checked:false },
 ];
 
-// ━━ HELPERS ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// ━━ PRIORITY HELPERS ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+const P_OPTIONS = [
+  {v:1, label:"P1 긴급", color:"#ef4444"},
+  {v:2, label:"P2 중요", color:"#f97316"},
+  {v:3, label:"P3 이번주", color:"#eab308"},
+  {v:4, label:"P4 여유", color:"#22c55e"},
+];
 function pc(p){ return p===1?"bp1":p===2?"bp2":p===3?"bp3":"bp4"; }
 function ps(p){ return p===1?"p1":p===2?"p2":p===3?"p3":"p4"; }
-function pLabel(p){ return p===1?"P1":p===2?"P2":p===3?"P3":"P4"; }
+function pLabel(p){ const o=P_OPTIONS.find(x=>x.v===p); return o?o.label.split(" ")[0]:"P?"; }
+
+// ━━ PRIORITY DROPDOWN ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// Returns HTML for a priority badge + dropdown
+function makePBadge(priority, taskId, source) {
+  // source: "team:pid" | "unassigned" | "midterm:idx"
+  const opts = P_OPTIONS.map(o =>
+    `<div class="p-option" onclick="event.stopPropagation();setPriority('${taskId}','${source}',${o.v})">
+       <div class="p-dot" style="background:${o.color}"></div>
+       <span>${o.label}</span>
+     </div>`
+  ).join("");
+  return `
+    <div class="p-toggle-wrap">
+      <span class="pbadge ${ps(priority)}" onclick="event.stopPropagation();togglePDropdown('pd-${taskId}')">${pLabel(priority)} ▾</span>
+      <div class="p-dropdown" id="pd-${taskId}">${opts}</div>
+    </div>`;
+}
+
+function togglePDropdown(id) {
+  // close all others first
+  document.querySelectorAll(".p-dropdown.open").forEach(d => { if(d.id!==id) d.classList.remove("open"); });
+  document.getElementById(id)?.classList.toggle("open");
+}
+
+function setPriority(taskId, source, newP) {
+  if(source.startsWith("team:")) {
+    const pid = source.split(":")[1];
+    const p = TEAM.find(t=>t.id===pid);
+    const t = p?.tasks.find(t=>t.id===taskId);
+    if(t) t.priority = newP;
+  } else if(source==="unassigned") {
+    const t = UNASSIGNED.find(t=>t.id===taskId);
+    if(t) t.priority = newP;
+  } else if(source.startsWith("midterm:")) {
+    const idx = parseInt(source.split(":")[1]);
+    if(MIDTERM[idx]) MIDTERM[idx].priority = newP;
+  }
+  document.getElementById(`pd-${taskId}`)?.classList.remove("open");
+  renderAll();
+}
+
+// Close dropdowns on outside click
+document.addEventListener("click", () => {
+  document.querySelectorAll(".p-dropdown.open").forEach(d=>d.classList.remove("open"));
+});
+
+// ━━ PERSON SELECT OVERLAY ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+let _personSelectCb = null;
+
+function openPersonSelect(title, includeUnassigned, cb) {
+  _personSelectCb = cb;
+  document.getElementById("ps-title").textContent = title;
+  const opts = document.getElementById("ps-options");
+  opts.innerHTML = "";
+  TEAM.forEach(p => {
+    const div = document.createElement("div");
+    div.className = "ps-option";
+    div.innerHTML = `<div class="ps-dot" style="background:${p.color}"></div>
+      <div><div class="ps-name">${p.name}</div><div class="ps-role">${p.role}</div></div>`;
+    div.onclick = () => { closePersonSelect(); cb(p.id); };
+    opts.appendChild(div);
+  });
+  if(includeUnassigned) {
+    const div = document.createElement("div");
+    div.className = "ps-option";
+    div.innerHTML = `<div class="ps-dot" style="background:var(--unassigned)"></div>
+      <div><div class="ps-name">미배정</div><div class="ps-role">담당자 미정</div></div>`;
+    div.onclick = () => { closePersonSelect(); cb("unassigned"); };
+    opts.appendChild(div);
+  }
+  document.getElementById("person-overlay").classList.add("open");
+}
+
+function closePersonSelect() {
+  document.getElementById("person-overlay").classList.remove("open");
+  _personSelectCb = null;
+}
 
 // ━━ RENDER BOARD ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-function renderBoard(){
+function renderBoard() {
   const board = document.getElementById("board");
   board.innerHTML = "";
 
-  // 팀원 열 렌더
   TEAM.forEach(p => {
     const count = p.tasks.length;
     const isOver = count > p.maxBlocks;
     const col = document.createElement("div");
     col.className = "person-col";
 
-    // 사이드바 세그먼트: 채워진 블록 + 빈 슬롯
     let sbSegs = "";
-    for(let i=0; i < Math.max(count, p.maxBlocks); i++){
-      if(i < count)
-        sbSegs += `<div class="sb-seg ${ps(p.tasks[i].priority)}" title="${p.tasks[i].title}"></div>`;
-      else
-        sbSegs += `<div class="sb-seg empty"></div>`;
+    for(let i=0; i<Math.max(count, p.maxBlocks); i++){
+      sbSegs += i<count
+        ? `<div class="sb-seg ${ps(p.tasks[i].priority)}" title="${p.tasks[i].title}"></div>`
+        : `<div class="sb-seg empty"></div>`;
     }
 
     col.innerHTML = `
@@ -406,7 +472,7 @@ function renderBoard(){
     board.appendChild(col);
 
     const stk = col.querySelector(`#stk-${p.id}`);
-    if(!count){
+    if(!count) {
       stk.innerHTML = `<div class="empty-slot">할일 없음</div>`;
     } else {
       p.tasks.forEach(t => {
@@ -415,7 +481,7 @@ function renderBoard(){
         b.innerHTML = `
           <div class="btop">
             <div class="btitle">${t.emoji} ${t.title}</div>
-            <span class="pbadge ${ps(t.priority)}">${pLabel(t.priority)}</span>
+            ${makePBadge(t.priority, t.id, "team:"+p.id)}
           </div>
           <div class="bdue ${t.urgency}">${t.due}</div>
           <div class="bdetail">
@@ -433,21 +499,15 @@ function renderBoard(){
     }
   });
 
-  // ── 미배정 열 (맨 우측) ──
+  // 미배정 열
   const ucol = document.createElement("div");
   ucol.className = "person-col unassigned-col";
-  let sbSegsU = "";
-  UNASSIGNED.forEach(t =>
-    sbSegsU += `<div class="sb-seg ${ps(t.priority)}" title="${t.title}"></div>`
-  );
-
+  let sbSegsU = UNASSIGNED.map(t => `<div class="sb-seg ${ps(t.priority)}" title="${t.title}"></div>`).join("");
   ucol.innerHTML = `
     <div class="person-head">
       <div class="pname" style="color:var(--unassigned)">미배정</div>
       <div class="prole">담당자 미정</div>
-      <div class="phead-meta">
-        <div class="pload-num">${UNASSIGNED.length} 블록</div>
-      </div>
+      <div class="phead-meta"><div class="pload-num">${UNASSIGNED.length} 블록</div></div>
     </div>
     <div class="col-body">
       <div class="col-sidebar">${sbSegsU}</div>
@@ -458,7 +518,7 @@ function renderBoard(){
   board.appendChild(ucol);
 
   const ustk = ucol.querySelector("#stk-unassigned");
-  if(!UNASSIGNED.length){
+  if(!UNASSIGNED.length) {
     ustk.innerHTML = `<div class="empty-slot">미배정 없음</div>`;
   } else {
     UNASSIGNED.forEach(t => {
@@ -467,7 +527,7 @@ function renderBoard(){
       b.innerHTML = `
         <div class="btop">
           <div class="btitle">${t.emoji} ${t.title}</div>
-          <span class="pbadge ${ps(t.priority)}">${pLabel(t.priority)}</span>
+          ${makePBadge(t.priority, t.id, "unassigned")}
         </div>
         <div class="bdue ${t.urgency}">${t.due}</div>
         <div class="bdetail">
@@ -483,51 +543,49 @@ function renderBoard(){
   }
 }
 
-function moveToMidterm(pid, tid){
-  const p = TEAM.find(t => t.id === pid);
-  const idx = p.tasks.findIndex(t => t.id === tid);
-  if(idx === -1) return;
-  const [task] = p.tasks.splice(idx, 1);
-  MIDTERM.push({emoji:task.emoji,title:task.title,
-    owner:p.name,ownerColor:p.color,due:task.due,priority:task.priority,detail:task.detail});
+function moveToMidterm(pid, tid) {
+  const p = TEAM.find(t=>t.id===pid);
+  const idx = p.tasks.findIndex(t=>t.id===tid);
+  if(idx===-1) return;
+  const [task] = p.tasks.splice(idx,1);
+  MIDTERM.push({emoji:task.emoji,title:task.title,owner:p.name,ownerColor:p.color,
+    due:task.due,priority:task.priority,detail:task.detail});
   renderAll();
 }
 
-function addBlock(pid){
+function addBlock(pid) {
   const title = prompt("태스크 이름:");
   if(!title) return;
-  const p = TEAM.find(t => t.id === pid);
-  p.tasks.push({id:"t"+Date.now(),emoji:"📌",title,due:"미정",urgency:"",priority:3,
-    detail:"상세 내용을 추가해주세요."});
+  const p = TEAM.find(t=>t.id===pid);
+  p.tasks.push({id:"t"+Date.now(),emoji:"📌",title,due:"미정",urgency:"",priority:3,detail:"상세 내용을 추가해주세요."});
   renderAll();
 }
 
-function addUnassigned(){
+function addUnassigned() {
   const title = prompt("미배정 태스크 이름:");
   if(!title) return;
-  UNASSIGNED.push({id:"u"+Date.now(),emoji:"📌",title,due:"미정",urgency:"",priority:3,
-    detail:"담당자 배정 필요."});
+  UNASSIGNED.push({id:"u"+Date.now(),emoji:"📌",title,due:"미정",urgency:"",priority:3,detail:"담당자 배정 필요."});
   renderAll();
 }
 
-function assignTask(tid){
-  const idx = UNASSIGNED.findIndex(t => t.id === tid);
-  if(idx === -1) return;
-  const who = prompt(`담당자 배정 (${TEAM.map(p=>p.name).join(" / ")})`);
-  const p = TEAM.find(p => p.name === who || p.id === who?.toLowerCase());
-  if(!p){ alert("이름을 정확히 입력해주세요."); return; }
-  const [task] = UNASSIGNED.splice(idx, 1);
-  p.tasks.push({id:"t"+Date.now(),emoji:task.emoji,title:task.title,due:task.due,
-    urgency:task.urgency,priority:task.priority,detail:task.detail});
-  renderAll();
+function assignTask(tid) {
+  openPersonSelect("담당자 배정", false, (pid) => {
+    const idx = UNASSIGNED.findIndex(t=>t.id===tid);
+    if(idx===-1) return;
+    const [task] = UNASSIGNED.splice(idx,1);
+    const p = TEAM.find(t=>t.id===pid);
+    p.tasks.push({id:"t"+Date.now(),emoji:task.emoji,title:task.title,due:task.due,
+      urgency:task.urgency,priority:task.priority,detail:task.detail});
+    renderAll();
+  });
 }
 
 // ━━ RENDER MIDTERM ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-function renderMidterm(){
+function renderMidterm() {
   const el = document.getElementById("midterm-list");
   el.innerHTML = "";
   MIDTERM.forEach((t,i) => {
-    const pColor = t.priority===1?"var(--p1)":t.priority===2?"var(--p2)":t.priority===3?"var(--p3)":"var(--p4)";
+    const pColor = ["","var(--p1)","var(--p2)","var(--p3)","var(--p4)"][t.priority];
     const card = document.createElement("div");
     card.className = "task-card";
     card.innerHTML = `
@@ -536,16 +594,15 @@ function renderMidterm(){
         <div class="tc-pbar" style="background:${pColor}"></div>
       </div>
       <div class="tc-body">
-        <div class="tc-title">${t.title}
-          <span class="pbadge ${ps(t.priority)}">${pLabel(t.priority)}</span>
-        </div>
+        <div class="tc-title">${t.title} ${makePBadge(t.priority, "mt"+i, "midterm:"+i)}</div>
         <div class="tc-meta">
           <span class="tc-owner" style="color:${t.ownerColor}">${t.owner}</span>
           <span class="tc-due">${t.due}</span>
         </div>
         <div class="tc-detail">
           ${t.detail}
-          <div class="tc-movebtn" onclick="event.stopPropagation();moveTodaily(${i})">🧱 데일리로 이동</div>
+          <br/>
+          <button class="tc-movebtn" onclick="event.stopPropagation();moveTodaily(${i})">🧱 데일리로 이동</button>
         </div>
       </div>
     `;
@@ -554,41 +611,34 @@ function renderMidterm(){
   });
 }
 
-function moveTodaily(idx){
+function moveTodaily(idx) {
   const t = MIDTERM[idx];
-  const who = prompt(`누구 컬럼으로 이동? (${TEAM.map(p=>p.name).join(" / ")} / 미배정)`);
-  if(who === "미배정"){
+  openPersonSelect("어느 컬럼으로 이동할까요?", true, (pid) => {
     MIDTERM.splice(idx,1);
-    UNASSIGNED.push({id:"u"+Date.now(),emoji:t.emoji,title:t.title,due:t.due,
-      urgency:"",priority:t.priority,detail:t.detail});
-    renderAll(); return;
-  }
-  const p = TEAM.find(p => p.name===who || p.id===who?.toLowerCase());
-  if(!p){ alert("이름을 정확히 입력해주세요."); return; }
-  MIDTERM.splice(idx,1);
-  p.tasks.push({id:"t"+Date.now(),emoji:t.emoji,title:t.title,due:t.due,
-    urgency:"",priority:t.priority,detail:t.detail});
-  renderAll();
+    if(pid==="unassigned") {
+      UNASSIGNED.push({id:"u"+Date.now(),emoji:t.emoji,title:t.title,due:t.due,
+        urgency:"",priority:t.priority,detail:t.detail});
+    } else {
+      const p = TEAM.find(p=>p.id===pid);
+      p.tasks.push({id:"t"+Date.now(),emoji:t.emoji,title:t.title,due:t.due,
+        urgency:"",priority:t.priority,detail:t.detail});
+    }
+    renderAll();
+  });
 }
 
 // ━━ RENDER REPORT ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-function renderReport(){
+function renderReport() {
   const el = document.getElementById("report-content");
   const groups = {};
-  DAILY_REPORT.forEach(r => {
-    if(!groups[r.owner]) groups[r.owner] = [];
-    groups[r.owner].push(r);
-  });
+  DAILY_REPORT.forEach(r => { if(!groups[r.owner]) groups[r.owner]=[]; groups[r.owner].push(r); });
   let html = "";
-  Object.entries(groups).forEach(([owner, items]) => {
-    const p = TEAM.find(t => t.name === owner) || {color:"var(--dim)"};
-    html += `<div class="report-section">
-      <div class="rs-title" style="color:${p.color}">${owner} 체크리스트</div>`;
+  Object.entries(groups).forEach(([owner,items]) => {
+    const p = TEAM.find(t=>t.name===owner)||{color:"var(--dim)"};
+    html += `<div class="report-section"><div class="rs-title" style="color:${p.color}">${owner} 체크리스트</div>`;
     items.forEach((r,i) => {
       html += `<div class="report-item">
-        <div class="ri-check ${r.checked?'checked':''}" onclick="toggleCheck('${owner}',${i})">
-          ${r.checked?"✓":""}
-        </div>
+        <div class="ri-check ${r.checked?'checked':''}" onclick="toggleCheck('${owner}',${i})">${r.checked?"✓":""}</div>
         <div class="ri-text">
           <div class="ri-title" style="${r.checked?'text-decoration:line-through;opacity:.4':''}">${r.title}</div>
           <div class="ri-owner">${r.time}</div>
@@ -600,65 +650,42 @@ function renderReport(){
   el.innerHTML = html;
 }
 
-function toggleCheck(owner, idx){
-  const r = DAILY_REPORT.filter(r => r.owner === owner)[idx];
-  if(r) r.checked = !r.checked;
+function toggleCheck(owner,idx) {
+  const r = DAILY_REPORT.filter(r=>r.owner===owner)[idx];
+  if(r) r.checked=!r.checked;
   renderReport();
 }
 
 // ━━ RENDER ADMIN ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-const EVALS = {
-  matt:  {speed:4,quality:5,comm:4,note:""},
-  jiun:  {speed:4,quality:4,comm:5,note:""},
-  new1:  {speed:0,quality:0,comm:0,note:""},
-  new2:  {speed:0,quality:0,comm:0,note:""},
-  new3:  {speed:0,quality:0,comm:0,note:""},
-};
+const EVALS = { matt:{speed:4,quality:5,comm:4,note:""}, jiun:{speed:4,quality:4,comm:5,note:""}, new1:{speed:0,quality:0,comm:0,note:""}, new2:{speed:0,quality:0,comm:0,note:""}, new3:{speed:0,quality:0,comm:0,note:""} };
 const CRITERIA = [{key:"speed",label:"실행속도"},{key:"quality",label:"퀄리티"},{key:"comm",label:"소통"}];
 
-function renderAdmin(){
+function renderAdmin() {
   const grid = document.getElementById("eval-grid");
   grid.innerHTML = "";
   TEAM.forEach(p => {
-    const ev = EVALS[p.id] || {speed:0,quality:0,comm:0,note:""};
-    let rows = "";
-    CRITERIA.forEach(c => {
+    const ev = EVALS[p.id]||{speed:0,quality:0,comm:0,note:""};
+    let rows = CRITERIA.map(c => {
       let stars = "";
-      for(let s=1;s<=5;s++){
-        stars += `<span class="star ${s<=(ev[c.key]||0)?'on':''}"
-          onclick="setStar('${p.id}','${c.key}',${s})">★</span>`;
-      }
-      rows += `<div class="eval-row">
-        <div class="eval-label">${c.label}</div>
-        <div class="eval-stars">${stars}</div>
-      </div>`;
-    });
-    grid.innerHTML += `
-      <div class="eval-card">
-        <div class="eval-name" style="color:${p.color}">${p.name}</div>
-        <div class="eval-role">${p.role}</div>
-        ${rows}
-        <textarea class="eval-note" id="note-${p.id}" rows="3"
-          placeholder="개인 피드백 메모...">${ev.note}</textarea>
-        <button class="eval-save" onclick="saveNote('${p.id}')">저장</button>
-      </div>`;
+      for(let s=1;s<=5;s++) stars+=`<span class="star ${s<=(ev[c.key]||0)?'on':''}" onclick="setStar('${p.id}','${c.key}',${s})">★</span>`;
+      return `<div class="eval-row"><div class="eval-label">${c.label}</div><div class="eval-stars">${stars}</div></div>`;
+    }).join("");
+    grid.innerHTML += `<div class="eval-card">
+      <div class="eval-name" style="color:${p.color}">${p.name}</div>
+      <div class="eval-role">${p.role}</div>${rows}
+      <textarea class="eval-note" id="note-${p.id}" rows="3" placeholder="개인 피드백 메모...">${ev.note}</textarea>
+      <button class="eval-save" onclick="saveNote('${p.id}')">저장</button>
+    </div>`;
   });
 }
 
-function setStar(pid,key,val){
-  if(!EVALS[pid]) EVALS[pid]={speed:0,quality:0,comm:0,note:""};
-  EVALS[pid][key]=val; renderAdmin();
-}
-function saveNote(pid){
-  EVALS[pid].note = document.getElementById(`note-${pid}`).value;
-  alert("저장됐습니다.");
-}
+function setStar(pid,key,val) { if(!EVALS[pid]) EVALS[pid]={speed:0,quality:0,comm:0,note:""}; EVALS[pid][key]=val; renderAdmin(); }
+function saveNote(pid) { EVALS[pid].note=document.getElementById(`note-${pid}`).value; alert("저장됐습니다."); }
 
 // ━━ PIN ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-const PIN = "1234";
+const PIN="1234";
 function checkPin(v){
-  for(let i=0;i<4;i++)
-    document.getElementById(`pd${i}`).classList.toggle("filled", i<v.length);
+  for(let i=0;i<4;i++) document.getElementById(`pd${i}`).classList.toggle("filled",i<v.length);
   if(v.length===4){
     if(v===PIN){
       document.getElementById("admin-lock").style.display="none";
@@ -673,23 +700,17 @@ function checkPin(v){
 }
 
 // ━━ NAV ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-function switchPage(id, btn){
+function switchPage(id,btn){
   document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
   document.querySelectorAll(".nav-btn").forEach(b=>b.classList.remove("active"));
   document.getElementById(`page-${id}`).classList.add("active");
   if(btn) btn.classList.add("active");
 }
 
-function renderAll(){
-  renderBoard();
-  renderMidterm();
-  renderReport();
-}
+function renderAll(){ renderBoard(); renderMidterm(); renderReport(); }
 
-// ━━ INIT ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-const d = new Date();
-document.getElementById("nav-date").textContent =
-  d.toLocaleDateString("ko-KR",{month:"long",day:"numeric",weekday:"short"});
+const d=new Date();
+document.getElementById("nav-date").textContent=d.toLocaleDateString("ko-KR",{month:"long",day:"numeric",weekday:"short"});
 renderAll();
 </script>
 </body>
