@@ -154,6 +154,20 @@
     .block.dragging{opacity:.4;cursor:grabbing;}
     .stack.drag-over{background:rgba(99,102,241,.07);border-radius:8px;outline:2px dashed var(--matt);}
 
+    /* ── undo toast ── */
+    #undo-toast{
+      position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(80px);
+      background:#1a1d23;color:#fff;border-radius:12px;padding:12px 18px;
+      display:flex;align-items:center;gap:12px;font-size:12px;font-weight:600;
+      box-shadow:0 6px 24px rgba(0,0,0,.22);z-index:500;
+      transition:transform .25s cubic-bezier(.34,1.56,.64,1),opacity .25s;
+      opacity:0;pointer-events:none;white-space:nowrap;
+    }
+    #undo-toast.show{transform:translateX(-50%) translateY(0);opacity:1;pointer-events:auto;}
+    #undo-toast button{background:#6366f1;color:#fff;border:none;border-radius:8px;
+      padding:5px 12px;font-size:11px;font-weight:700;cursor:pointer;}
+    #undo-toast button:hover{background:#4f46e5;}
+
     /* ━━ MIDTERM ━━ */
     .task-list{display:flex;flex-direction:column;gap:10px;}
     .task-card{background:var(--surface);border:1.5px solid var(--border);
@@ -223,6 +237,12 @@
   </style>
 </head>
 <body>
+
+<!-- ── 되돌리기 토스트 ── -->
+<div id="undo-toast">
+  <span id="undo-msg">블록 이동됨</span>
+  <button onclick="undoMove()">되돌리기</button>
+</div>
 
 <!-- ── 담당자 선택 오버레이 (전역) ── -->
 <div class="person-select-overlay" id="person-overlay" onclick="closePersonSelect()">
@@ -712,9 +732,38 @@ function switchPage(id,btn){
 
 function renderAll(){ renderBoard(); renderMidterm(); renderReport(); initDragDrop(); }
 
+// ━━ UNDO ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+let _undoSnapshot = null;  // { TEAM deep-copy, UNASSIGNED deep-copy, msg }
+let _undoTimer    = null;
+
+function saveUndoSnapshot(msg) {
+  _undoSnapshot = {
+    team: JSON.parse(JSON.stringify(TEAM.map(p=>({...p, tasks:[...p.tasks.map(t=>({...t}))]}) ))),
+    unassigned: JSON.parse(JSON.stringify(UNASSIGNED.map(t=>({...t})))),
+    msg
+  };
+}
+
+function showUndoToast(msg) {
+  const toast = document.getElementById("undo-toast");
+  document.getElementById("undo-msg").textContent = msg;
+  toast.classList.add("show");
+  clearTimeout(_undoTimer);
+  _undoTimer = setTimeout(() => toast.classList.remove("show"), 5000);
+}
+
+function undoMove() {
+  if(!_undoSnapshot) return;
+  // Restore TEAM tasks
+  TEAM.forEach((p,i) => { p.tasks = _undoSnapshot.team[i].tasks; });
+  UNASSIGNED.length = 0;
+  _undoSnapshot.unassigned.forEach(t => UNASSIGNED.push(t));
+  _undoSnapshot = null;
+  document.getElementById("undo-toast").classList.remove("show");
+  renderAll();
+}
+
 // ━━ DRAG & DROP ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-// State: { taskId, sourceColId }
-// sourceColId: team member id OR "unassigned"
 let dragState = null;
 
 function initDragDrop() {
@@ -753,6 +802,9 @@ function initDragDrop() {
 
       if(srcColId === targetColId) return; // same column — no-op
 
+      // Save snapshot BEFORE mutation
+      saveUndoSnapshot("");
+
       // Remove task from source
       let task = null;
       if(srcColId === "unassigned") {
@@ -768,6 +820,8 @@ function initDragDrop() {
       }
 
       // Add to target
+      const srcName  = srcColId  === "unassigned" ? "미배정" : (TEAM.find(p=>p.id===srcColId)?.name  || srcColId);
+      const tgtName  = targetColId === "unassigned" ? "미배정" : (TEAM.find(p=>p.id===targetColId)?.name || targetColId);
       if(targetColId === "unassigned") {
         UNASSIGNED.push({...task, id:"u"+Date.now()});
       } else {
@@ -777,6 +831,7 @@ function initDragDrop() {
       }
 
       renderAll();
+      showUndoToast(`"${task.title}" → ${tgtName}으로 이동`);
     });
   });
 }
