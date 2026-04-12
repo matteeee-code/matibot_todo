@@ -53,9 +53,9 @@
     .legd{width:18px;height:14px;border-radius:3px;}
 
     /* ━━ BOARD ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    .board{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;align-items:start;}
-    @media(max-width:1100px){.board{grid-template-columns:repeat(3,1fr);}}
-    @media(max-width:680px){.board{grid-template-columns:repeat(2,1fr);}}
+    .board{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;align-items:start;}
+    @media(max-width:900px){.board{grid-template-columns:repeat(3,1fr);}}
+    @media(max-width:600px){.board{grid-template-columns:repeat(2,1fr);}}
 
     .person-col{background:var(--surface);border:1.5px solid var(--border);
                 border-radius:14px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.05);}
@@ -295,7 +295,7 @@
 <script>
 // ━━ DATA ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 const TEAM = [
-  { id:"matt", name:"Matt", role:"대표", color:"var(--matt)", maxBlocks:5,
+  { id:"matt", name:"Matt", role:"대표", color:"var(--matt)",
     tasks:[
       { id:"m1",emoji:"📦",title:"BR-001 배송 준비",due:"D-27",urgency:"urgent",priority:1,
         detail:"Tony와 메일링 박스 감사 스티커·크래프트 테이프 최종 확인. 5월 배송 데드라인." },
@@ -307,7 +307,7 @@ const TEAM = [
         detail:"박스 외관 스티커·프린팅. Jiun과 협업." },
     ]
   },
-  { id:"jiun", name:"Jiun", role:"디자인·물류", color:"var(--jiun)", maxBlocks:5,
+  { id:"jiun", name:"Jiun", role:"디자인·물류", color:"var(--jiun)",
     tasks:[
       { id:"j1",emoji:"🎨",title:"비주얼 무드보드 레이어1",due:"이번 주",urgency:"soon",priority:3,
         detail:"미드저니 v7 프롬프트 02~06 검증. 봄 희뿌연 온기 톤." },
@@ -317,9 +317,7 @@ const TEAM = [
         detail:"구글 시트 운송비 데이터. Builder API 자동화 지원 예정." },
     ]
   },
-  { id:"new1", name:"신규 A", role:"입사 예정", color:"var(--new1)", maxBlocks:5, tasks:[] },
-  { id:"new2", name:"신규 B", role:"입사 예정", color:"var(--new2)", maxBlocks:5, tasks:[] },
-  { id:"new3", name:"신규 C", role:"입사 예정", color:"var(--new3)", maxBlocks:5, tasks:[] },
+  { id:"new1", name:"신규 A", role:"입사 예정", color:"var(--new1)", tasks:[] },
 ];
 
 const UNASSIGNED = [
@@ -443,24 +441,20 @@ function renderBoard() {
 
   TEAM.forEach(p => {
     const count = p.tasks.length;
-    const isOver = count > p.maxBlocks;
     const col = document.createElement("div");
     col.className = "person-col";
 
-    let sbSegs = "";
-    for(let i=0; i<Math.max(count, p.maxBlocks); i++){
-      sbSegs += i<count
-        ? `<div class="sb-seg ${ps(p.tasks[i].priority)}" title="${p.tasks[i].title}"></div>`
-        : `<div class="sb-seg empty"></div>`;
-    }
+    // 사이드바: 실제 태스크 수만큼만 (빈 슬롯 없음)
+    let sbSegs = p.tasks.map(t =>
+      `<div class="sb-seg ${ps(t.priority)}" title="${t.title}"></div>`
+    ).join("") || `<div class="sb-seg empty"></div>`;
 
     col.innerHTML = `
-      <div class="person-head ${isOver?'overloaded':''}">
+      <div class="person-head">
         <div class="pname" style="color:${p.color}">${p.name}</div>
         <div class="prole">${p.role}</div>
         <div class="phead-meta">
-          <div class="pload-num">${count}/${p.maxBlocks} 블록</div>
-          <div class="pover">⚠ 과부하</div>
+          <div class="pload-num">${count} 블록</div>
         </div>
       </div>
       <div class="col-body">
@@ -502,7 +496,7 @@ function renderBoard() {
   // 미배정 열
   const ucol = document.createElement("div");
   ucol.className = "person-col unassigned-col";
-  let sbSegsU = UNASSIGNED.map(t => `<div class="sb-seg ${ps(t.priority)}" title="${t.title}"></div>`).join("");
+  let sbSegsU = UNASSIGNED.map(t => `<div class="sb-seg ${ps(t.priority)}" title="${t.title}"></div>`).join("") || `<div class="sb-seg empty"></div>`;
   ucol.innerHTML = `
     <div class="person-head">
       <div class="pname" style="color:var(--unassigned)">미배정</div>
@@ -657,7 +651,7 @@ function toggleCheck(owner,idx) {
 }
 
 // ━━ RENDER ADMIN ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-const EVALS = { matt:{speed:4,quality:5,comm:4,note:""}, jiun:{speed:4,quality:4,comm:5,note:""}, new1:{speed:0,quality:0,comm:0,note:""}, new2:{speed:0,quality:0,comm:0,note:""}, new3:{speed:0,quality:0,comm:0,note:""} };
+const EVALS = { matt:{speed:4,quality:5,comm:4,note:""}, jiun:{speed:4,quality:4,comm:5,note:""}, new1:{speed:0,quality:0,comm:0,note:""} };
 const CRITERIA = [{key:"speed",label:"실행속도"},{key:"quality",label:"퀄리티"},{key:"comm",label:"소통"}];
 
 function renderAdmin() {
