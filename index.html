@@ -543,17 +543,27 @@ function makePBadge(priority, taskId, source) {
 }
 
 function togglePDrop(id) {
-  document.querySelectorAll(".p-dropdown.open").forEach(d=>{ if(d.id!==id) d.classList.remove("open"); });
-  document.getElementById(id)?.classList.toggle("open");
+  document.querySelectorAll(".p-dropdown.open").forEach(d=>{
+    if(d.id!==id) {
+      d.classList.remove("open");
+      const b=d.closest(".block"); if(b) b.style.zIndex="";
+    }
+  });
+  const el=document.getElementById(id); if(!el) return;
+  const isOpen=el.classList.toggle("open");
+  const block=el.closest(".block"); if(block) block.style.zIndex=isOpen?"500":"";
 }
 function setPriority(taskId, source, newP) {
   if(source.startsWith("team:")) {
     const p = TEAM.find(t=>t.id===source.split(":")[1]);
     const t = p?.tasks.find(t=>t.id===taskId); if(t) t.priority=newP;
+    if(p) p.tasks.sort((a,b)=>a.priority-b.priority);
   } else if(source==="unassigned") {
     const t = UNASSIGNED.find(t=>t.id===taskId); if(t) t.priority=newP;
+    UNASSIGNED.sort((a,b)=>a.priority-b.priority);
   } else if(source.startsWith("mid:")) {
     const i=parseInt(source.split(":")[1]); if(MIDTERM[i]) MIDTERM[i].priority=newP;
+    MIDTERM.sort((a,b)=>a.priority-b.priority);
   }
   document.getElementById(`pd-${taskId}`)?.classList.remove("open");
   renderAll();
@@ -682,6 +692,8 @@ async function notifySlackComplete(title, assignee, emoji) {
 
 // ━━ RENDER BOARD ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 function renderBoard() {
+  TEAM.forEach(p=>p.tasks.sort((a,b)=>a.priority-b.priority));
+  UNASSIGNED.sort((a,b)=>a.priority-b.priority);
   const board=document.getElementById("board"); board.innerHTML="";
   TEAM.forEach(p=>{
     const count=p.tasks.length;
