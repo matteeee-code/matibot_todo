@@ -449,7 +449,9 @@ const DAILY_REPORT = [
   { title:"운송비 Google API 권한 설정", owner:"Jiun", time:"이번주 내", checked:false },
 ];
 
-const DONE = [];
+const DONE = [
+  {id:"done-ai1",emoji:"🖼️",title:"AI 이미지 모으기",assignee:"Matt",priority:3,detail:"완료 처리됨.",completedAt:"4월 13일"},
+];
 const DONE_EVALS = {};
 
 // ━━ CATEGORY ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -604,6 +606,7 @@ function completeTask(pid, tid) {
     assignee,priority:task.priority,detail:task.detail,
     completedAt:now.toLocaleDateString("ko-KR",{month:"long",day:"numeric"})});
   renderAll();
+  saveDoneStorage();
   notifySlackComplete(task.title, assignee, task.emoji);
 }
 
@@ -774,6 +777,15 @@ function moveTodaily(idx) {
 }
 
 // ━━ RENDER DONE ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// localStorage 영속성
+function saveDoneStorage(){try{localStorage.setItem("dari_done",JSON.stringify(DONE));localStorage.setItem("dari_done_evals",JSON.stringify(DONE_EVALS));}catch(e){}}
+function loadDoneStorage(){
+  try{
+    const d=localStorage.getItem("dari_done"); if(d){const arr=JSON.parse(d); if(arr.length>DONE.length){DONE.length=0;arr.forEach(x=>DONE.push(x));}}
+    const e=localStorage.getItem("dari_done_evals"); if(e){const obj=JSON.parse(e);Object.assign(DONE_EVALS,obj);}
+  }catch(e){}
+}
+
 let doneFilter="all";
 function filterDone(val, btn) {
   doneFilter=val;
@@ -829,6 +841,7 @@ function saveDoneNote(id){
   if(!DONE_EVALS[id])DONE_EVALS[id]={note:"",editing:false};
   DONE_EVALS[id].note=document.getElementById(`dnote-${id}`)?.value||"";
   DONE_EVALS[id].editing=false;
+  saveDoneStorage();
   renderDone();
 }
 
@@ -900,7 +913,8 @@ function renderAll() { renderBoard(); renderMidterm(); renderDone(); renderRepor
 
 const d=new Date();
 document.getElementById("nav-date").textContent=d.toLocaleDateString("ko-KR",{month:"long",day:"numeric",weekday:"short"});
-renderAll();
+loadDoneStorage();
+renderAll();;
 </script>
 </body>
 </html>
