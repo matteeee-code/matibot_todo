@@ -49,11 +49,12 @@
     .legd{width:16px;height:12px;border-radius:3px;}
 
     /* ━━ DAILY LAYOUT ━━ */
-    .daily-layout{display:grid;grid-template-columns:1fr 210px;gap:14px;align-items:start;}
-    @media(max-width:860px){.daily-layout{grid-template-columns:1fr;}}
+    .daily-layout{display:grid;grid-template-columns:1fr 190px;gap:12px;align-items:start;}
+    @media(max-width:960px){.daily-layout{grid-template-columns:1fr;}}
+    @media(max-width:960px){.goals-panel{position:static;}}
 
     /* BOARD — 컬럼 꽉 채우기 */
-    .board{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;align-items:start;}
+    .board{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;align-items:start;}
 
     /* GOALS PANEL */
     .goals-panel{background:var(--surface);border:1.5px solid var(--border);
@@ -396,7 +397,7 @@ const TEAM = [
         detail:"구글 시트 운송비 데이터. Builder API 자동화 지원 예정." },
     ]
   },
-  { id:"new1", name:"신규 A", role:"입사 예정", color:"var(--new1)", tasks:[] },
+  { id:"new1", name:"해림", role:"입사 예정", color:"var(--new1)", tasks:[] },
 ];
 
 const UNASSIGNED = [
