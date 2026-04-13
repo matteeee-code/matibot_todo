@@ -237,8 +237,8 @@
     .done-empty-msg{text-align:center;padding:40px;font-size:13px;color:var(--dim);}
 
     /* DONE 2단 레이아웃 */
-    .done-layout{display:grid;grid-template-columns:1fr 260px;gap:16px;align-items:start;}
-    @media(max-width:900px){.done-layout{grid-template-columns:1fr;}}
+    .done-layout{display:grid;grid-template-columns:1fr 300px;gap:16px;align-items:start;}
+    @media(max-width:960px){.done-layout{grid-template-columns:1fr;}}
     .done-left{min-width:0;}
 
     /* 통계 패널 */
@@ -914,73 +914,70 @@ function saveDoneNote(id){
 }
 
 // ━━ RENDER STATS PANEL ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 팀 시작일 (법인 설립일 기준)
+const TEAM_START = new Date("2025-11-06");
+
 function renderDoneStats() {
   const panel=document.getElementById("done-stats-panel");
   if(!panel) return;
   const total=DONE.length;
-  if(!total){panel.innerHTML="";return;}
-
-  // 인원별 집계
-  const byPerson={};
-  DONE.forEach(d=>{
-    if(!byPerson[d.assignee]) byPerson[d.assignee]={count:0,p1:0,p2:0,p3:0,p4:0};
-    byPerson[d.assignee].count++;
-    byPerson[d.assignee]["p"+(d.priority||3)]++;
-  });
-  const pColors=["","#ef4444","#f97316","#eab308","#22c55e"];
-  const teamOrder=["Matt","Jiun","해림","미배정"];
-  const sorted=Object.keys(byPerson).sort((a,b)=>(teamOrder.indexOf(a)===-1?99:teamOrder.indexOf(a))-(teamOrder.indexOf(b)===-1?99:teamOrder.indexOf(b)));
-  const maxCount=Math.max(...sorted.map(n=>byPerson[n].count));
-  const teamColors={"Matt":"var(--matt)","Jiun":"var(--jiun)","해림":"var(--new1)","미배정":"var(--unassigned)"};
+  if(!total){
+    panel.innerHTML=`<div class="stats-title">📊 팀 통계</div><div style="text-align:center;padding:30px 0;font-size:12px;color:var(--xdim)">완료된 업무가 없습니다</div>`;
+    return;
+  }
 
   // 우선순위별 집계
   const byP={p1:0,p2:0,p3:0,p4:0};
   DONE.forEach(d=>{byP["p"+(d.priority||3)]++;});
 
-  // 피드백 달린 비율
-  const withFb=DONE.filter(d=>DONE_EVALS[d.id]?.note).length;
-  const fbRate=total?Math.round(withFb/total*100):0;
+  // 평균 처리 속도 계산
+  const now=new Date();
+  const daysSinceStart=Math.max(1,Math.round((now-TEAM_START)/(1000*60*60*24)));
+  const perDay=(total/daysSinceStart).toFixed(1);
+  const perWeek=(total/daysSinceStart*7).toFixed(1);
+
+  // 처리 속도 상태
+  const speedNum=parseFloat(perWeek);
+  const speedIcon=speedNum>=10?"🔥":speedNum>=5?"⚡":speedNum>=2?"🏃":"🌱";
+  const speedLabel=speedNum>=10?"고속 질주":speedNum>=5?"탄력 붙는 중":speedNum>=2?"꾸준히 진행":"워밍업 중";
+
+  // 누적 이동 평균 (최근 7일 완료)
+  const recent7=DONE.filter(d=>{
+    // completedAt 파싱은 어렵지만 index 기반으로 근사
+    return true; // 현재 날짜 저장 안 되므로 전체 기준
+  }).length;
 
   let html=`
     <div class="stats-title">📊 팀 통계</div>
 
     <div class="stat-block">
       <div class="stat-label">총 완료 업무</div>
-      <div class="stat-val">${total}<span style="font-size:13px;font-weight:600;color:var(--dim)"> 건</span></div>
-      <div class="stat-sub">피드백 기록률 ${fbRate}%</div>
+      <div class="stat-val" style="font-size:32px;">${total}<span style="font-size:16px;font-weight:600;color:var(--dim)"> 건</span></div>
+      <div class="stat-sub">법인 설립 후 ${daysSinceStart}일째 운영 중</div>
     </div>
 
     <div class="stat-block">
-      <div class="stat-label">인원별 완료</div>
-      <div class="stat-bar-wrap">
-        ${sorted.map(name=>{
-          const pct=maxCount?Math.round(byPerson[name].count/maxCount*100):0;
-          const color=teamColors[name]||"var(--dim)";
-          return `<div class="stat-bar-row">
-            <div class="stat-bar-name" style="color:${color}">${name.length>3?name.slice(0,3):name}</div>
-            <div class="stat-bar-bg"><div class="stat-bar-fill" style="width:${pct}%;background:${color}"></div></div>
-            <div class="stat-bar-num">${byPerson[name].count}</div>
-          </div>`;
-        }).join("")}
+      <div class="stat-label">평균 처리 속도</div>
+      <div style="display:flex;align-items:baseline;gap:6px;margin-top:6px;">
+        <div style="font-size:28px;font-weight:800;color:var(--text)">${perWeek}</div>
+        <div style="font-size:13px;font-weight:600;color:var(--dim)">건 / 주</div>
       </div>
-    </div>
-
-    <div class="stat-block">
-      <div class="stat-label">우선순위 분포</div>
-      <div class="stat-p-row">
-        ${[1,2,3,4].map(p=>`<div class="stat-p-badge pbadge p${p}">P${p} · ${byP["p"+p]}</div>`).join("")}
-      </div>
-    </div>
-
-    <div class="stat-block">
-      <div class="stat-label">업무 처리 강도</div>
-      <div class="stat-speed-row">
-        <div class="speed-icon">${total>=10?"🔥":total>=5?"⚡":"🌱"}</div>
+      <div class="stat-sub" style="margin-top:3px;">일평균 ${perDay}건 처리</div>
+      <div class="stat-speed-row" style="margin-top:10px;">
+        <div class="speed-icon">${speedIcon}</div>
         <div>
-          <div class="speed-text">${total>=10?"고속 처리":total>=5?"순항 중":"시작 단계"}</div>
-          <div class="speed-sub">P1+P2 = ${byP.p1+byP.p2}건 고강도 완료</div>
+          <div class="speed-text">${speedLabel}</div>
+          <div class="speed-sub">더 잘게 쪼갤수록 속도 올라간다</div>
         </div>
       </div>
+    </div>
+
+    <div class="stat-block">
+      <div class="stat-label">완료 우선순위 분포</div>
+      <div class="stat-p-row" style="margin-top:8px;gap:8px;">
+        ${[1,2,3,4].map(p=>`<div class="stat-p-badge pbadge p${p}" style="font-size:10px;padding:3px 10px;">P${p} · ${byP["p"+p]}</div>`).join("")}
+      </div>
+      <div class="stat-sub" style="margin-top:8px;">고강도(P1+P2) ${byP.p1+byP.p2}건 완료</div>
     </div>`;
 
   panel.innerHTML=html;
