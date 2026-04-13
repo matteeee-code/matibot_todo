@@ -236,6 +236,34 @@
     .done-save{font-size:10px;font-weight:700;padding:4px 12px;border-radius:20px;background:var(--matt);color:#fff;border:none;cursor:pointer;margin-top:6px;}
     .done-empty-msg{text-align:center;padding:40px;font-size:13px;color:var(--dim);}
 
+    /* DONE 2단 레이아웃 */
+    .done-layout{display:grid;grid-template-columns:1fr 260px;gap:16px;align-items:start;}
+    @media(max-width:900px){.done-layout{grid-template-columns:1fr;}}
+    .done-left{min-width:0;}
+
+    /* 통계 패널 */
+    .done-stats-panel{background:var(--surface);border:1.5px solid var(--border);border-radius:14px;
+                      padding:16px;position:sticky;top:60px;box-shadow:0 1px 4px rgba(0,0,0,.05);}
+    .stats-title{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+                 color:var(--dim);margin-bottom:14px;}
+    .stat-block{margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--border);}
+    .stat-block:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+    .stat-label{font-size:9px;font-weight:700;color:var(--dim);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px;}
+    .stat-val{font-size:22px;font-weight:800;color:var(--text);line-height:1.2;}
+    .stat-sub{font-size:10px;color:var(--dim);margin-top:2px;}
+    .stat-bar-wrap{margin-top:8px;display:flex;flex-direction:column;gap:5px;}
+    .stat-bar-row{display:flex;align-items:center;gap:7px;}
+    .stat-bar-name{font-size:10px;font-weight:700;width:32px;flex-shrink:0;color:var(--dim);}
+    .stat-bar-bg{flex:1;height:8px;background:var(--surface2);border-radius:4px;overflow:hidden;}
+    .stat-bar-fill{height:100%;border-radius:4px;transition:width .4s;}
+    .stat-bar-num{font-size:9px;font-weight:700;color:var(--dim);width:18px;text-align:right;flex-shrink:0;}
+    .stat-p-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;}
+    .stat-p-badge{font-size:9px;font-weight:800;padding:2px 8px;border-radius:20px;}
+    .stat-speed-row{display:flex;align-items:center;gap:8px;margin-top:6px;}
+    .speed-icon{font-size:18px;}
+    .speed-text{font-size:12px;font-weight:700;color:var(--text);}
+    .speed-sub{font-size:10px;color:var(--dim);}
+
     /* ━━ REPORT ━━ */
     .report-section{margin-bottom:24px;}
     .rs-title{font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;
@@ -342,15 +370,22 @@
 <!-- DONE -->
 <div class="page" id="page-done">
   <div class="ph"><h2>✅ 완료 목록</h2>
-    <p>완료된 업무 — 인원별로 확인하고 피드백 메모를 남겨두세요</p></div>
-  <div class="done-filter-bar">
-    <button class="done-filter-btn active" onclick="filterDone('all',this)">전체</button>
-    <button class="done-filter-btn" onclick="filterDone('Matt',this)">Matt</button>
-    <button class="done-filter-btn" onclick="filterDone('Jiun',this)">Jiun</button>
-    <button class="done-filter-btn" onclick="filterDone('해림',this)">해림</button>
-    <button class="done-filter-btn" onclick="filterDone('미배정',this)">미배정</button>
+    <p>완료된 업무 — 인원별 리스트 + 팀 통계 대시보드</p></div>
+  <div class="done-layout">
+    <!-- 좌: 완료 목록 -->
+    <div class="done-left">
+      <div class="done-filter-bar">
+        <button class="done-filter-btn active" onclick="filterDone('all',this)">전체</button>
+        <button class="done-filter-btn" onclick="filterDone('Matt',this)">Matt</button>
+        <button class="done-filter-btn" onclick="filterDone('Jiun',this)">Jiun</button>
+        <button class="done-filter-btn" onclick="filterDone('해림',this)">해림</button>
+        <button class="done-filter-btn" onclick="filterDone('미배정',this)">미배정</button>
+      </div>
+      <div id="done-container"></div>
+    </div>
+    <!-- 우: 통계 패널 -->
+    <div class="done-stats-panel" id="done-stats-panel"></div>
   </div>
-  <div id="done-container"></div>
 </div>
 
 <!-- REPORT -->
@@ -792,6 +827,7 @@ function filterDone(val, btn) {
   document.querySelectorAll(".done-filter-btn").forEach(b=>b.classList.remove("active"));
   btn.classList.add("active");
   renderDone();
+  renderDoneStats();
 }
 function renderDone() {
   const container=document.getElementById("done-container");
@@ -843,6 +879,79 @@ function saveDoneNote(id){
   DONE_EVALS[id].editing=false;
   saveDoneStorage();
   renderDone();
+}
+
+// ━━ RENDER STATS PANEL ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+function renderDoneStats() {
+  const panel=document.getElementById("done-stats-panel");
+  if(!panel) return;
+  const total=DONE.length;
+  if(!total){panel.innerHTML="";return;}
+
+  // 인원별 집계
+  const byPerson={};
+  DONE.forEach(d=>{
+    if(!byPerson[d.assignee]) byPerson[d.assignee]={count:0,p1:0,p2:0,p3:0,p4:0};
+    byPerson[d.assignee].count++;
+    byPerson[d.assignee]["p"+(d.priority||3)]++;
+  });
+  const pColors=["","#ef4444","#f97316","#eab308","#22c55e"];
+  const teamOrder=["Matt","Jiun","해림","미배정"];
+  const sorted=Object.keys(byPerson).sort((a,b)=>(teamOrder.indexOf(a)===-1?99:teamOrder.indexOf(a))-(teamOrder.indexOf(b)===-1?99:teamOrder.indexOf(b)));
+  const maxCount=Math.max(...sorted.map(n=>byPerson[n].count));
+  const teamColors={"Matt":"var(--matt)","Jiun":"var(--jiun)","해림":"var(--new1)","미배정":"var(--unassigned)"};
+
+  // 우선순위별 집계
+  const byP={p1:0,p2:0,p3:0,p4:0};
+  DONE.forEach(d=>{byP["p"+(d.priority||3)]++;});
+
+  // 피드백 달린 비율
+  const withFb=DONE.filter(d=>DONE_EVALS[d.id]?.note).length;
+  const fbRate=total?Math.round(withFb/total*100):0;
+
+  let html=`
+    <div class="stats-title">📊 팀 통계</div>
+
+    <div class="stat-block">
+      <div class="stat-label">총 완료 업무</div>
+      <div class="stat-val">${total}<span style="font-size:13px;font-weight:600;color:var(--dim)"> 건</span></div>
+      <div class="stat-sub">피드백 기록률 ${fbRate}%</div>
+    </div>
+
+    <div class="stat-block">
+      <div class="stat-label">인원별 완료</div>
+      <div class="stat-bar-wrap">
+        ${sorted.map(name=>{
+          const pct=maxCount?Math.round(byPerson[name].count/maxCount*100):0;
+          const color=teamColors[name]||"var(--dim)";
+          return `<div class="stat-bar-row">
+            <div class="stat-bar-name" style="color:${color}">${name.length>3?name.slice(0,3):name}</div>
+            <div class="stat-bar-bg"><div class="stat-bar-fill" style="width:${pct}%;background:${color}"></div></div>
+            <div class="stat-bar-num">${byPerson[name].count}</div>
+          </div>`;
+        }).join("")}
+      </div>
+    </div>
+
+    <div class="stat-block">
+      <div class="stat-label">우선순위 분포</div>
+      <div class="stat-p-row">
+        ${[1,2,3,4].map(p=>`<div class="stat-p-badge pbadge p${p}">P${p} · ${byP["p"+p]}</div>`).join("")}
+      </div>
+    </div>
+
+    <div class="stat-block">
+      <div class="stat-label">업무 처리 강도</div>
+      <div class="stat-speed-row">
+        <div class="speed-icon">${total>=10?"🔥":total>=5?"⚡":"🌱"}</div>
+        <div>
+          <div class="speed-text">${total>=10?"고속 처리":total>=5?"순항 중":"시작 단계"}</div>
+          <div class="speed-sub">P1+P2 = ${byP.p1+byP.p2}건 고강도 완료</div>
+        </div>
+      </div>
+    </div>`;
+
+  panel.innerHTML=html;
 }
 
 // ━━ RENDER REPORT ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -909,7 +1018,7 @@ function switchPage(id,btn) {
   if(btn) btn.classList.add("active");
 }
 
-function renderAll() { renderBoard(); renderMidterm(); renderDone(); renderReport(); initDragDrop(); }
+function renderAll() { renderBoard(); renderMidterm(); renderDone(); renderDoneStats(); renderReport(); initDragDrop(); }
 
 const d=new Date();
 document.getElementById("nav-date").textContent=d.toLocaleDateString("ko-KR",{month:"long",day:"numeric",weekday:"short"});
