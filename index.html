@@ -215,13 +215,13 @@
     .done-person-header{display:flex;align-items:center;gap:10px;margin-bottom:10px;padding-bottom:8px;border-bottom:2px solid var(--border);}
     .done-person-name{font-size:13px;font-weight:800;}
     .done-person-count{font-size:11px;color:var(--dim);font-weight:600;}
-    .done-list{display:flex;flex-direction:column;gap:8px;}
-    .done-card{background:var(--surface);border:1.5px solid var(--border);border-radius:12px;padding:13px 15px;transition:box-shadow .15s;}
+    .done-list{display:flex;flex-direction:column;gap:5px;}
+    .done-card{background:var(--surface);border:1.5px solid var(--border);border-radius:9px;padding:7px 10px;transition:box-shadow .15s;}
     .done-card:hover{box-shadow:0 2px 8px rgba(0,0,0,.06);}
-    .done-top{display:flex;align-items:flex-start;gap:10px;margin-bottom:6px;}
-    .done-emoji{font-size:17px;flex-shrink:0;margin-top:1px;}
-    .done-title{font-size:13px;font-weight:700;flex:1;color:var(--dim);text-decoration:line-through;line-height:1.4;}
-    .done-meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:10px;color:var(--dim);margin-bottom:4px;}
+    .done-top{display:flex;align-items:center;gap:7px;margin-bottom:2px;}
+    .done-emoji{font-size:13px;flex-shrink:0;}
+    .done-title{font-size:11px;font-weight:600;flex:1;color:var(--dim);text-decoration:line-through;line-height:1.3;}
+    .done-meta{display:flex;gap:6px;align-items:center;flex-wrap:wrap;font-size:9px;color:var(--xdim);margin-bottom:1px;}
     .done-date{color:var(--xdim);}
     .done-fb-wrap{margin-top:8px;}
     .done-fb-label{font-size:9px;font-weight:700;color:var(--dim);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px;}
@@ -230,23 +230,23 @@
     .done-fb-edit.open{display:block;}
     .done-note{width:100%;background:var(--surface2);border:1.5px solid var(--border2);border-radius:8px;padding:8px;font-size:11px;resize:vertical;font-family:inherit;color:var(--text);box-sizing:border-box;margin-top:4px;}
     .done-note:focus{border-color:var(--matt);outline:none;}
-    .done-actions{display:flex;gap:6px;margin-top:8px;align-items:center;}
+    .done-actions{display:flex;gap:5px;margin-top:5px;align-items:center;}
     .done-fb-btn{font-size:10px;font-weight:700;padding:4px 12px;border-radius:20px;background:var(--surface2);border:1.5px solid var(--border2);color:var(--dim);cursor:pointer;}
     .done-fb-btn:hover{border-color:var(--matt);color:var(--matt);}
     .done-save{font-size:10px;font-weight:700;padding:4px 12px;border-radius:20px;background:var(--matt);color:#fff;border:none;cursor:pointer;margin-top:6px;}
     .done-empty-msg{text-align:center;padding:40px;font-size:13px;color:var(--dim);}
 
     /* DONE 2단 레이아웃 */
-    .done-layout{display:grid;grid-template-columns:1fr 300px;gap:16px;align-items:start;}
+    .done-layout{display:grid;grid-template-columns:1.2fr 0.8fr;gap:16px;align-items:start;}
     @media(max-width:960px){.done-layout{grid-template-columns:1fr;}}
     .done-left{min-width:0;}
 
     /* 통계 패널 */
     .done-stats-panel{background:var(--surface);border:1.5px solid var(--border);border-radius:14px;
                       padding:16px;position:sticky;top:60px;box-shadow:0 1px 4px rgba(0,0,0,.05);}
-    .stats-title{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+    .stats-title{font-size:13px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;
                  color:var(--dim);margin-bottom:14px;}
-    .stat-block{margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--border);}
+    .stat-block{margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid var(--border);}
     .stat-block:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
     .stat-label{font-size:9px;font-weight:700;color:var(--dim);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px;}
     .stat-val{font-size:22px;font-weight:800;color:var(--text);line-height:1.2;}
@@ -372,7 +372,9 @@
   <div class="ph"><h2>✅ 완료 목록</h2>
     <p>완료된 업무 — 인원별 리스트 + 팀 통계 대시보드</p></div>
   <div class="done-layout">
-    <!-- 좌: 완료 목록 -->
+    <!-- 좌: 통계 패널 (메인) -->
+    <div class="done-stats-panel" id="done-stats-panel"></div>
+    <!-- 우: 완료 목록 (서브) -->
     <div class="done-left">
       <div class="done-filter-bar">
         <button class="done-filter-btn active" onclick="filterDone('all',this)">전체</button>
@@ -383,8 +385,6 @@
       </div>
       <div id="done-container"></div>
     </div>
-    <!-- 우: 통계 패널 -->
-    <div class="done-stats-panel" id="done-stats-panel"></div>
   </div>
 </div>
 
