@@ -683,7 +683,7 @@ function completeTask(pid, tid) {
     [task]=p.tasks.splice(i,1); assignee=p.name;
   }
   const now=new Date();
-  DONE.unshift({id:"d"+Date.now(),title:task.title,emoji:task.emoji,
+  DONE.unshift({id:"d"+Date.now(),origId:tid,title:task.title,emoji:task.emoji,
     assignee,priority:task.priority,detail:task.detail,
     completedAt:now.toLocaleDateString("ko-KR",{month:"long",day:"numeric"})});
   renderAll();
@@ -861,11 +861,26 @@ function moveTodaily(idx) {
 
 // ━━ RENDER DONE ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 // localStorage 영속성
-function saveDoneStorage(){try{localStorage.setItem("dari_done",JSON.stringify(DONE));localStorage.setItem("dari_done_evals",JSON.stringify(DONE_EVALS));}catch(e){}}
+function saveDoneStorage(){
+  try{
+    localStorage.setItem("dari_done",JSON.stringify(DONE));
+    localStorage.setItem("dari_done_evals",JSON.stringify(DONE_EVALS));
+    // 완료된 task의 원본 id 목록 저장 (rollback 방지)
+    const ids=DONE.map(d=>d.origId).filter(Boolean);
+    localStorage.setItem("dari_done_ids",JSON.stringify(ids));
+  }catch(e){}
+}
 function loadDoneStorage(){
   try{
     const d=localStorage.getItem("dari_done"); if(d){const arr=JSON.parse(d); if(arr.length>DONE.length){DONE.length=0;arr.forEach(x=>DONE.push(x));}}
     const e=localStorage.getItem("dari_done_evals"); if(e){const obj=JSON.parse(e);Object.assign(DONE_EVALS,obj);}
+    // 완료된 task ID 복원 → TEAM/UNASSIGNED에서 제거 (rollback 방지)
+    const ids=localStorage.getItem("dari_done_ids");
+    if(ids){
+      const doneSet=new Set(JSON.parse(ids));
+      TEAM.forEach(p=>{p.tasks=p.tasks.filter(t=>!doneSet.has(t.id));});
+      for(let i=UNASSIGNED.length-1;i>=0;i--){if(doneSet.has(UNASSIGNED[i].id)){UNASSIGNED.splice(i,1);}}
+    }
   }catch(e){}
 }
 
