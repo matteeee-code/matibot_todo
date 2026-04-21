@@ -416,120 +416,14 @@
 </div>
 
 <script>
-// ━━ DATA ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-const TEAM = [
-  { id:"matt", name:"Matt", role:"대표", color:"var(--matt)",
-    tasks:[
-      { id:"m1",emoji:"📦",title:"BR-001 배송 준비",due:"D-27",urgency:"urgent",priority:1,
-        detail:"Tony와 메일링 박스 감사 스티커·크래프트 테이프 최종 확인. 5월 배송 데드라인." },
-      { id:"m2",emoji:"🏃",title:"DARI CLASS 시즌1",due:"5/8 시작",urgency:"urgent",priority:1,
-        detail:"망원한강공원. 선착순 20명 모집 중. 당근·스마트스토어 채널 운영." },
-      { id:"m3",emoji:"📱",title:"인플루언서 아웃리치",due:"이번 주",urgency:"soon",priority:3,
-        detail:"러닝/도시 크리에이터 DM 발송. Builder가 리스트업 지원." },
-      { id:"m4",emoji:"🎁",title:"메일링 박스 브랜딩",due:"배송 전",urgency:"urgent",priority:2,
-        detail:"박스 외관 스티커·프린팅. Jiun과 협업." },
-      { id:"m5",emoji:"✉️",title:"킥스타터 보낼 사람 편지 쓰기",due:"배송 전",urgency:"soon",priority:2,
-        detail:"킥스타터 백커 대상 감사 편지 작성. 배송 박스 동봉용." },
-      { id:"m_insta_shop",emoji:"🛍️",title:"인스타 샵 연결",due:"담주",urgency:"soon",priority:3,
-        detail:"Instagram Shopping 기능 연결 및 설정. 제품 태그 연동." },
-      { id:"m_running2",emoji:"🏃",title:"러닝세션 2회차 준비",due:"담주",urgency:"soon",priority:2,
-        detail:"2회차 러닝세션 운영 준비. 참가자 관리 및 현장 세팅." },
-      { id:"m_class",emoji:"🎽",title:"DARI CLASS 운영 준비",due:"담주",urgency:"soon",priority:2,
-        detail:"DARI CLASS 운영 관련 준비사항 처리." },
-      { id:"m_runclub",emoji:"📸",title:"런클럽 게시물",due:"담주",urgency:"",priority:3,
-        detail:"런클럽 관련 콘텐츠 게시물 작성 및 업로드." },
-      { id:"m_shopify_seo",emoji:"🔍",title:"쇼피파이 SEO 최적화",due:"담주",urgency:"soon",priority:2,
-        detail:"구글에서 다리마티 검색 시 Shopify 페이지가 최상단 노출되도록 SEO 최적화. 메타태그·페이지 타이틀·구조화 데이터 등." },
-      { id:"m_influencer_collab",emoji:"🤝",title:"인플루언서 협업 구조 정리 & 컨택",due:"담주",urgency:"soon",priority:2,
-        detail:"인플루언서 협업 노선(시딩/어필리에이트/유료) 구조 정리 후 협업 대상 컨택 진행." },
-      { id:"m_affiliate",emoji:"🔗",title:"어필리에이트 구조화 (페데리코 미팅)",due:"목요일",urgency:"urgent",priority:2,
-        detail:"목요일 페데리코 미팅 — 래퍼(wrapper) 페이지 생성 제안 + 어필리에이트 링크 구조화 논의." },
-      { id:"m_channel_page",emoji:"📄",title:"채널별 페이지 오픈",due:"이번 주",urgency:"urgent",priority:1,
-        detail:"이번주 핵심 할일. 채널별 페이지 오픈으로 접근. 대표님 직접 지시 (2026-04-20)." },
-    ]
-  },
-  { id:"jiun", name:"Jiun", role:"디자인·물류", color:"var(--jiun)",
-    tasks:[
-      { id:"j4",emoji:"📣",title:"당근 카카오 지역 기반 광고 세팅",due:"이번 주",urgency:"soon",priority:2,
-        detail:"당근마켓·카카오 지역 타겟 광고 캠페인 세팅 및 집행." },
-      { id:"j5",emoji:"🤝",title:"민형님 RNR 확인 / 화요일 2:30 공유",due:"화요일 2:30",urgency:"urgent",priority:2,
-        detail:"① 세일즈 핸디 세팅법 알려드리기 ② 리스트업 1차 대상 협의 가이드라인·계약서·일정 체크 ③ 샘플 발송 틱톡샵 통해서 ④ 번들 상품 썸네일 자체 제작 후 제품 등록" },
-      { id:"j6",emoji:"📦",title:"인디고고 배송 연출 - 소명",due:"미정",urgency:"soon",priority:2,
-        detail:"인디고고 배송 연출 관련 소명 자료 준비 및 처리." },
-      { id:"j7",emoji:"🚚",title:"제이앤코슈 L3 추가 발송",due:"내일(민형님)",urgency:"urgent",priority:2,
-        detail:"제이앤코슈 L3 사이즈 추가 발송 처리. 민형님과 함께 내일 진행." },
-      { id:"j8",emoji:"🔄",title:"국내 주문건 연동 – 자사 재고 반영 자동화",due:"이번 주",urgency:"",priority:3,
-        detail:"국내 주문건 채널 연동 및 자사 재고 자동 반영 시스템 구축." },
-      { id:"j9",emoji:"🗂️",title:"카드뉴스형 상세페이지 스킬화",due:"이번 주",urgency:"",priority:3,
-        detail:"지금까지 작업한 카드뉴스형 상세페이지 프로세스 스킬 문서화." },
-      { id:"j10",emoji:"📋",title:"PI/CI 등 수출 자료 제작 자동화",due:"미정",urgency:"",priority:3,
-        detail:"① 필수 규칙 반영 md 파일 작성 ② ACI 규격 자동 출력 시트 및 프로세스 정리" },
-      { id:"j11",emoji:"🎬",title:"크리에이터 확보 국내 바이럴 프로세스 정리",due:"미정",urgency:"",priority:3,
-        detail:"국내 바이럴 기준 크리에이터 확보 프로세스 정리. 자동화 파트와 RNR 분리." },
-      { id:"j12",emoji:"💬",title:"카카오톡 CS 세팅 구조화",due:"미정",urgency:"",priority:3,
-        detail:"카카오톡 CS 세팅 방향 슬랙에서 구조화 먼저. 채널 설정·응대 스크립트·자동화 여부 정의 후 실행." },
-      { id:"j13",emoji:"🏃",title:"러닝클래스 준비 구조화",due:"미정",urgency:"",priority:3,
-        detail:"러닝클래스 운영 준비 슬랙에서 구조화 먼저. 일정·모집·현장 운영·콘텐츠 계획 정의 후 실행." },
-      { id:"j14",emoji:"📬",title:"플라스크 관세사 팔로업",due:"이번 주",urgency:"soon",priority:2,
-        detail:"플라스크 관련 관세사 연락 및 진행 상황 확인." },
-      { id:"j15",emoji:"🥕",title:"당근마켓 이번주 일요일 러닝세션 새소식 올리기",due:"이번 주 일요일",urgency:"urgent",priority:1,
-        detail:"당근마켓 새소식에 이번 주 일요일 러닝세션 관련 콘텐츠 게시." },
-      { id:"j16",emoji:"📄",title:"클래스 전단지/콘텐츠 배포용 레퍼런스 찾기",due:"이번 주",urgency:"urgent",priority:1,
-        detail:"DARI CLASS 전단지 및 콘텐츠 배포용 레퍼런스 수집. 러닝 클래스/운동 클래스 사례 중심." },
-      { id:"j17",emoji:"📦",title:"국내 배송 발송 목록 뽑기 (한진)",due:"이번 주",urgency:"urgent",priority:1,
-        detail:"한진 택배 국내 배송 대상 목록 정리 및 발송 준비." },
-      { id:"j18",emoji:"💬",title:"카카오톡 웰컴 메시지 세팅",due:"이번 주",urgency:"urgent",priority:1,
-        detail:"카카오 채널 웰컴 메시지 설정." },
-    ]
-  },
-  { id:"new1", name:"해림", role:"입사 예정", color:"var(--new1)", tasks:[
-      { id:"h1",emoji:"📦",title:"킥스타터 배송 준비 — 혜택 콘텐츠 & 출력물 제작",due:"배송 전",urgency:"soon",priority:2,detail:"킥스타터 백커 배송용 혜택 안내 콘텐츠 + 동봉 출력물(카드/스티커 등) 제작." },
-      { id:"h2",emoji:"📝",title:"다리클럽 소개문 디벨롭",due:"이번 주",urgency:"soon",priority:2,detail:"DARI CLUB 소개 문구 개선 및 완성." },
-      { id:"h3",emoji:"📰",title:"RTR 기사 릴리즈",due:"미정",urgency:"",priority:3,detail:"Road Trail Run 기사 배포 및 관리." },
-      { id:"h4",emoji:"🛍️",title:"네이버 스마트스토어 상세페이지 개선",due:"긴급",urgency:"urgent",priority:1,detail:"스마트스토어 상세페이지 내용 개선 및 업데이트." },
-      { id:"h6",emoji:"🖨️",title:"킥스타터 출력물 출력",due:"한지 도착 후",urgency:"soon",priority:2,detail:"킥스타터 동봉용 출력물, 한지 도착 시 즉시 출력 진행." },
-      { id:"h5",emoji:"📱",title:"다리클럽 인스타그램 계정 연동 및 운영 계획",due:"이번 주",urgency:"soon",priority:2,detail:"DARI CLUB 인스타그램 계정 셋업 및 운영 전략 수립." },
-    ] },
-];
+// ━━ DATA (tasks.json에서 fetch로 로드) ━━━━━━━━━━━━━━━━━━━━
+let TEAM, UNASSIGNED, MIDTERM;
 
-const UNASSIGNED = [
-  { id:"u1",emoji:"🖼️",title:"인스타 콘텐츠 캘린더",due:"조율 필요",urgency:"soon",priority:2,
-    detail:"4~5월 인스타그램 포스팅 스케줄. 담당자 배정 필요." },
-  { id:"u2",emoji:"📝",title:"킥스타터 업데이트 글",due:"5월 배송 전",urgency:"urgent",priority:1,
-    detail:"백커들에게 배송 준비 현황 공지. 영문 작성 필요." },
-  { id:"u3",emoji:"📦",title:"택배 비품 사기 (봉투·테이프)",due:"미정",urgency:"",priority:3,
-    detail:"배송용 봉투랑 크래프트 테이프 구매. 담당자 배정 필요." },
-  { id:"u4",emoji:"🃏",title:"카드 뉴스 피그마로 다듬기",due:"미정",urgency:"",priority:3,
-    detail:"현재 카드 뉴스 시안을 피그마로 정리·완성. 담당자 배정 필요." },
-  { id:"u5",emoji:"📊",title:"메이커스 오픈했을 때 카카오 광고 효율 체감",due:"미정",urgency:"",priority:3,
-    detail:"메이커스 오픈 시점 카카오 광고 성과 지표 정리 및 효율 체감 분석. 담당자 배정 필요." },
-  { id:"u6",emoji:"📈",title:"재고랑 매출 대시보드 만들기",due:"미정",urgency:"",priority:3,
-    detail:"재고 현황 + 매출 흐름 한눈에 볼 수 있는 대시보드 구축. 담당자 배정 필요." },
-  { id:"u7",emoji:"🎬",title:"현재 GIF 훅 약함 AI 영상으로 개선",due:"미정",urgency:"",priority:3,
-    detail:"기존 GIF 후크 콘텐츠 대신 AI 영상으로 대체. 담당자 배정 필요." },
-  { id:"u8",emoji:"🇺🇸",title:"미국 신뢰 콘텐츠 — 로우 데이터 정제 후 카드 뉴스 제작",due:"미정",urgency:"",priority:3,
-    detail:"미국 신뢰 관련 로우 데이터를 정제해 문장형·이미지 임베디드 카드 뉴스로 제작. 담당자 배정 필요." },
-  { id:"u9",emoji:"📅",title:"다리클럽 다음 이벤트 정하기",due:"미정",urgency:"",priority:3,
-    detail:"다리클럽 다음 이벤트 기획 및 일정 확정. 담당자 배정 필요." },
-];
-
-const MIDTERM = [
-  { emoji:"📰",title:"DARI 매거진 2호",owner:"Matt·Jiun",ownerColor:"#6366f1",due:"5월 목표",priority:3,
-    category:"콘텐츠",startDate:"2026-04",endDate:"2026-05",
-    detail:"한남대교 (한남·이태원·해방촌). 인터뷰 대상 선정 → 편집 → 인쇄." },
-  { emoji:"👟",title:"레이어2 비주얼 프롬프트",owner:"Jiun·Builder",ownerColor:"var(--jiun)",due:"레이어1 완료 후",priority:3,
-    category:"디자인",startDate:"2026-04",endDate:"미정",
-    detail:"인물+신발 등장 컷. Jiun 레퍼런스 이미지 4장 기반." },
-  { emoji:"🔧",title:"악세서리 포장 규격화",owner:"Matt",ownerColor:"var(--matt)",due:"여유 있음",priority:4,
-    category:"제품",startDate:"미정",endDate:"미정",
-    detail:"포장 통일 후 단품 판매 상품성 확보." },
-  { emoji:"🗂️",title:"DARI CLASS 아카이브 구조",owner:"Builder",ownerColor:"var(--new1)",due:"5월 이후",priority:4,
-    category:"운영",startDate:"2026-05",endDate:"미정",
-    detail:"시즌별 결과물 노션 아카이빙 구조. 멤버십 연동 장기 설계." },
-  { emoji:"📦",title:"슈박스 내부 문구 수정",owner:"Matt",ownerColor:"var(--matt)",due:"미정",priority:3,
-    category:"제품",startDate:"2026-04",endDate:"미정",
-    detail:"현재 킥스타터용으로 기재된 문구를 정규 판매용으로 수정 필요." },
-];
+async function loadData() {
+  const resp = await fetch('tasks.json?t=' + Date.now());
+  const data = await resp.json();
+  return data;
+}
 
 const DAILY_REPORT = [
   { title:"Tony 크래프트 테이프 문의 메일", owner:"Matt", time:"오전 중", checked:false },
@@ -1099,10 +993,16 @@ function switchPage(id,btn) {
 
 function renderAll() { renderBoard(); renderMidterm(); renderDone(); renderDoneStats(); renderReport(); initDragDrop(); }
 
-const d=new Date();
-document.getElementById("nav-date").textContent=d.toLocaleDateString("ko-KR",{month:"long",day:"numeric",weekday:"short"});
-loadDoneStorage();
-renderAll();;
+(async () => {
+  const data = await loadData();
+  TEAM = data.team;
+  UNASSIGNED = data.unassigned;
+  MIDTERM = data.midterm;
+  const d=new Date();
+  document.getElementById("nav-date").textContent=d.toLocaleDateString("ko-KR",{month:"long",day:"numeric",weekday:"short"});
+  loadDoneStorage();
+  renderAll();
+})();
 </script>
 </body>
 </html>
