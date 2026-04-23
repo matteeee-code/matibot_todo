@@ -265,42 +265,6 @@
           "urgency": "urgent",
           "priority": 1,
           "detail": "카카오 채널 웰컴 메시지 설정."
-        },
-        {
-          "id": "j_naver_set",
-          "emoji": "🛒",
-          "title": "네이버 악세서리-세트 상품 등록",
-          "due": "이번 주",
-          "urgency": "soon",
-          "priority": 2,
-          "detail": "해림님 금욜 방문 시 지운님께 설명 듣고 수행. 네이버 스토어 내 악세서리-세트 번들 상품 등록."
-        },
-        {
-          "id": "j_wadiz_detail",
-          "emoji": "📝",
-          "title": "와디즈 상품 상세 고시 등 정보 추가",
-          "due": "이번 주",
-          "urgency": "soon",
-          "priority": 2,
-          "detail": "와디즈 프로젝트 내 채워야 할 상품 상세·고시 등 정보 추가. 엠디 협업형 수수료 11%로 세팅."
-        },
-        {
-          "id": "j_wadiz_page",
-          "emoji": "🖥️",
-          "title": "와디즈 기본 상세페이지 채우기",
-          "due": "이번 주",
-          "urgency": "soon",
-          "priority": 2,
-          "detail": "와디즈 기본 상세페이지 전체 채우기. 엠디 협업형으로 수수료 11% 적용."
-        },
-        {
-          "id": "j_daily_order",
-          "emoji": "📋",
-          "title": "[매일] 발주 확인 및 등록",
-          "due": "매일",
-          "urgency": "soon",
-          "priority": 2,
-          "detail": "해림님 매일 반복 업무. 발주 현황 확인 및 시스템에 등록. 지운님께 교육 후 수행."
         }
       ]
     },
@@ -363,6 +327,51 @@
           "urgency": "soon",
           "priority": 2,
           "detail": "DARI CLUB 인스타그램 계정 셋업 및 운영 전략 수립."
+        },
+        {
+          "id": "h_naver_set",
+          "emoji": "🛒",
+          "title": "네이버 악세서리-세트 상품 등록",
+          "due": "이번 주",
+          "urgency": "soon",
+          "priority": 2,
+          "detail": "해림님 금욜 방문 시 지운님께 설명 듣고 수행. 네이버 스토어 내 악세서리-세트 번들 상품 등록."
+        },
+        {
+          "id": "h_wadiz_detail",
+          "emoji": "📝",
+          "title": "와디즈 상품 상세 고시 등 정보 추가",
+          "due": "이번 주",
+          "urgency": "soon",
+          "priority": 2,
+          "detail": "와디즈 프로젝트 내 채워야 할 상품 상세·고시 등 정보 추가. 엠디 협업형 수수료 11%로 세팅."
+        },
+        {
+          "id": "h_wadiz_page",
+          "emoji": "🖥️",
+          "title": "와디즈 기본 상세페이지 채우기",
+          "due": "이번 주",
+          "urgency": "soon",
+          "priority": 2,
+          "detail": "와디즈 기본 상세페이지 전체 채우기. 엠디 협업형으로 수수료 11% 적용."
+        },
+        {
+          "id": "h_daily_order",
+          "emoji": "📋",
+          "title": "[매일] 발주 확인 및 등록",
+          "due": "매일",
+          "urgency": "soon",
+          "priority": 2,
+          "detail": "해림님 매일 반복 업무. 발주 현황 확인 및 시스템에 등록. 지운님께 교육 후 수행."
+        },
+        {
+          "id": "h_claude_cardnews",
+          "emoji": "🃏",
+          "title": "클로드로 카드뉴스 생성하는 법 알려주기",
+          "due": "담주",
+          "urgency": "soon",
+          "priority": 3,
+          "detail": "담주 중 클로드(Claude)를 활용하여 카드뉴스 생성하는 방법 팀원에게 공유."
         }
       ]
     }
@@ -448,15 +457,6 @@
       "urgency": "",
       "priority": 3,
       "detail": "다리클럽 다음 이벤트 기획 및 일정 확정. 담당자 배정 필요."
-    },
-    {
-      "id": "u_claude_cardnews",
-      "emoji": "🃏",
-      "title": "클로드로 카드뉴스 생성하는 법 알려주기",
-      "due": "담주",
-      "urgency": "soon",
-      "priority": 3,
-      "detail": "담주 중 클로드(Claude)를 활용하여 카드뉴스 생성하는 방법 팀원에게 공유."
     }
   ],
   "midterm": [
