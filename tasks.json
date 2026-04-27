@@ -94,7 +94,7 @@
           "due": "담주",
           "urgency": "soon",
           "priority": 2,
-          "detail": "구글에서 다리마티 검색 시 Shopify 페이지가 최상단 노출되도록 SEO 최적화. 메타태그·페이지 타이틀·구조화 데이터 등."
+          "detail": "구글에서 다리마티 검색 시 Shopify 페이지가 최상단 노출되도록 SEO 최적화."
         },
         {
           "id": "m_influencer_collab",
@@ -252,7 +252,7 @@
           "id": "j17",
           "emoji": "📦",
           "title": "국내 배송 발송 목록 뽑기 (한진)",
-          "due": "이번 주",
+          "due": "오늘",
           "urgency": "urgent",
           "priority": 1,
           "detail": "한진 택배 국내 배송 대상 목록 정리 및 발송 준비."
@@ -265,6 +265,114 @@
           "urgency": "urgent",
           "priority": 1,
           "detail": "카카오 채널 웰컴 메시지 설정."
+        },
+        {
+          "id": "j_shopify_affiliate",
+          "emoji": "🔗",
+          "title": "쇼피파이 어필리에이트 가시화 작업",
+          "due": "오늘",
+          "urgency": "urgent",
+          "priority": 1,
+          "detail": "쇼피파이 어필리에이트 링크 가시화. 개발자 서포트가 필요한 영역이 어디인지 먼저 확인."
+        },
+        {
+          "id": "j_influencer_approach",
+          "emoji": "🇰🇷",
+          "title": "국내 인플루언서 접근 방식 정하기",
+          "due": "오늘",
+          "urgency": "urgent",
+          "priority": 1,
+          "detail": "국내 인플루언서 어떻게 접근할지 방향 설정. 시딩/어필리에이트/유료 노선 중 초기 전략 결정."
+        },
+        {
+          "id": "j_shipping_schedule",
+          "emoji": "🚢",
+          "title": "선적 일정 확인 + 카카오톡 프로세스 정리",
+          "due": "오늘",
+          "urgency": "urgent",
+          "priority": 1,
+          "detail": "선적 직전 프로세스 클로드 정리. 카카오톡에서 관련 내용 뽑아서 정리."
+        },
+        {
+          "id": "j_running_class_spread",
+          "emoji": "🏃",
+          "title": "러닝클래스 뿌리기",
+          "due": "오늘",
+          "urgency": "urgent",
+          "priority": 1,
+          "detail": "DARI CLASS 참가자 모집 콘텐츠 확산. 당근/인스타/카카오 등 채널별 배포."
+        },
+        {
+          "id": "j_aci_register",
+          "emoji": "🛒",
+          "title": "ACI 상품 등록",
+          "due": "이번 주",
+          "urgency": "soon",
+          "priority": 2,
+          "detail": "ACI 플랫폼 상품 등록 처리."
+        },
+        {
+          "id": "j_aligo_fix",
+          "emoji": "🔔",
+          "title": "알리고 수신 안되는 문제 해결",
+          "due": "이번 주",
+          "urgency": "soon",
+          "priority": 2,
+          "detail": "알리고 SMS/알림톡 수신 안되는 문제 원인 파악 및 수정."
+        },
+        {
+          "id": "j_sales_template",
+          "emoji": "📋",
+          "title": "판매처 업로드 템플릿 만들기",
+          "due": "이번 주",
+          "urgency": "soon",
+          "priority": 2,
+          "detail": "각 판매처(스마트스토어/와디즈/쇼피파이 등)에 상품 업로드할 때 쓸 표준 템플릿 제작."
+        },
+        {
+          "id": "j_may1_picnic",
+          "emoji": "🧺",
+          "title": "5/1 망원 빵 피크닉 스마트스토어 업데이트",
+          "due": "5/1 전",
+          "urgency": "",
+          "priority": 3,
+          "detail": "5월 1일 망원 빵 피크닉 이벤트 관련 스마트스토어 상품/페이지 업데이트."
+        },
+        {
+          "id": "j_jnk_guide",
+          "emoji": "🎬",
+          "title": "제이앤코슈 숏폼 가이드 – 민형님 요청 정제",
+          "due": "미정",
+          "urgency": "",
+          "priority": 3,
+          "detail": "민형님 요청사항 정제 후 제이앤코슈 숏폼 콘텐츠 가이드 작성."
+        },
+        {
+          "id": "j_jnk_influencer",
+          "emoji": "➕",
+          "title": "제이앤코슈 신규 인플루언서 리스트 추가",
+          "due": "미정",
+          "urgency": "",
+          "priority": 3,
+          "detail": "제이앤코슈 협업 대상 신규 인플루언서 발굴 및 리스트 추가."
+        },
+        {
+          "id": "j_insta_running_img",
+          "emoji": "📸",
+          "title": "인스타 러닝세션 이미지 업로드",
+          "due": "미정",
+          "urgency": "",
+          "priority": 3,
+          "detail": "인스타그램 러닝세션 관련 이미지 업로드."
+        },
+        {
+          "id": "j_naver_upload_wait",
+          "emoji": "⏳",
+          "title": "네이버 업로드 대기",
+          "due": "미정",
+          "urgency": "",
+          "priority": 3,
+          "detail": "네이버 스마트스토어 업로드 대기 중 상품 처리."
         }
       ]
     },
