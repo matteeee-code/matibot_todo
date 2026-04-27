@@ -132,6 +132,60 @@
       "color": "var(--jiun)",
       "tasks": [
         {
+          "id": "j_group_running_promo",
+          "emoji": "🏃",
+          "title": "[묶음] 러닝클래스 홍보",
+          "due": "오늘",
+          "urgency": "urgent",
+          "priority": 1,
+          "detail": "① 러닝클래스 채널별 뿌리기 (당근/인스타/카카오)\n② 당근마켓 이번주 일요일 러닝세션 새소식 올리기\n③ 클래스 전단지·콘텐츠 배포용 레퍼런스 찾기\n→ 세 가지 같은 맥락, 한 번에 처리."
+        },
+        {
+          "id": "j_group_affiliate_influencer",
+          "emoji": "🔗",
+          "title": "[묶음] 인플루언서 전략 (어필리에이트 → 접근 방식)",
+          "due": "오늘",
+          "urgency": "urgent",
+          "priority": 1,
+          "detail": "① 쇼피파이 어필리에이트 가시화 — 개발자 서포트 필요 영역 확인 (먼저)\n② 국내 인플루언서 접근 방식 정하기 (어필리에이트 구조 확인 후)\n→ 어필리에이트 구조가 잡혀야 인플루언서 접근 방식도 정해짐."
+        },
+        {
+          "id": "j17",
+          "emoji": "📦",
+          "title": "국내 배송 발송 목록 뽑기 (한진)",
+          "due": "오늘",
+          "urgency": "urgent",
+          "priority": 1,
+          "detail": "한진 택배 국내 배송 대상 목록 정리 및 발송 준비."
+        },
+        {
+          "id": "j18",
+          "emoji": "💬",
+          "title": "카카오톡 웰컴 메시지 세팅",
+          "due": "이번 주",
+          "urgency": "urgent",
+          "priority": 1,
+          "detail": "카카오 채널 웰컴 메시지 설정."
+        },
+        {
+          "id": "j_shipping_schedule",
+          "emoji": "🚢",
+          "title": "선적 일정 확인 + 카카오톡 프로세스 정리",
+          "due": "오늘",
+          "urgency": "urgent",
+          "priority": 1,
+          "detail": "선적 직전 프로세스 클로드 정리. 카카오톡에서 관련 내용 뽑아서 정리."
+        },
+        {
+          "id": "j_group_sales_channel",
+          "emoji": "🛒",
+          "title": "[묶음] 판매채널 셋업",
+          "due": "이번 주",
+          "urgency": "soon",
+          "priority": 2,
+          "detail": "① ACI 상품 등록\n② 판매처 업로드 템플릿 만들기\n③ 알리고 수신 안되는 문제 해결\n→ 채널 오픈 전 한 번에 처리."
+        },
+        {
           "id": "j4",
           "emoji": "📣",
           "title": "당근 카카오 지역 기반 광고 세팅",
@@ -168,60 +222,6 @@
           "detail": "제이앤코슈 L3 사이즈 추가 발송 처리. 민형님과 함께 내일 진행."
         },
         {
-          "id": "j8",
-          "emoji": "🔄",
-          "title": "국내 주문건 연동 – 자사 재고 반영 자동화",
-          "due": "이번 주",
-          "urgency": "",
-          "priority": 3,
-          "detail": "국내 주문건 채널 연동 및 자사 재고 자동 반영 시스템 구축."
-        },
-        {
-          "id": "j9",
-          "emoji": "🗂️",
-          "title": "카드뉴스형 상세페이지 스킬화",
-          "due": "이번 주",
-          "urgency": "",
-          "priority": 3,
-          "detail": "지금까지 작업한 카드뉴스형 상세페이지 프로세스 스킬 문서화."
-        },
-        {
-          "id": "j10",
-          "emoji": "📋",
-          "title": "PI/CI 등 수출 자료 제작 자동화",
-          "due": "미정",
-          "urgency": "",
-          "priority": 3,
-          "detail": "① 필수 규칙 반영 md 파일 작성 ② ACI 규격 자동 출력 시트 및 프로세스 정리"
-        },
-        {
-          "id": "j11",
-          "emoji": "🎬",
-          "title": "크리에이터 확보 국내 바이럴 프로세스 정리",
-          "due": "미정",
-          "urgency": "",
-          "priority": 3,
-          "detail": "국내 바이럴 기준 크리에이터 확보 프로세스 정리. 자동화 파트와 RNR 분리."
-        },
-        {
-          "id": "j12",
-          "emoji": "💬",
-          "title": "카카오톡 CS 세팅 구조화",
-          "due": "미정",
-          "urgency": "",
-          "priority": 3,
-          "detail": "카카오톡 CS 세팅 방향 슬랙에서 구조화 먼저. 채널 설정·응대 스크립트·자동화 여부 정의 후 실행."
-        },
-        {
-          "id": "j13",
-          "emoji": "🏃",
-          "title": "러닝클래스 준비 구조화",
-          "due": "미정",
-          "urgency": "",
-          "priority": 3,
-          "detail": "러닝클래스 운영 준비 슬랙에서 구조화 먼저. 일정·모집·현장 운영·콘텐츠 계획 정의 후 실행."
-        },
-        {
           "id": "j14",
           "emoji": "📬",
           "title": "플라스크 관세사 팔로업",
@@ -231,103 +231,22 @@
           "detail": "플라스크 관련 관세사 연락 및 진행 상황 확인."
         },
         {
-          "id": "j15",
-          "emoji": "🥕",
-          "title": "당근마켓 이번주 일요일 러닝세션 새소식 올리기",
-          "due": "이번 주 일요일",
-          "urgency": "urgent",
-          "priority": 1,
-          "detail": "당근마켓 새소식에 이번 주 일요일 러닝세션 관련 콘텐츠 게시."
+          "id": "j_group_jnk",
+          "emoji": "🎬",
+          "title": "[묶음] 제이앤코슈 콘텐츠",
+          "due": "미정",
+          "urgency": "",
+          "priority": 3,
+          "detail": "① 숏폼 가이드 — 민형님 요청 정제 후 작성\n② 신규 인플루언서 리스트 추가\n→ 가이드 완성 후 리스트 추가 순서 권장."
         },
         {
-          "id": "j16",
-          "emoji": "📄",
-          "title": "클래스 전단지/콘텐츠 배포용 레퍼런스 찾기",
-          "due": "이번 주",
-          "urgency": "urgent",
-          "priority": 1,
-          "detail": "DARI CLASS 전단지 및 콘텐츠 배포용 레퍼런스 수집. 러닝 클래스/운동 클래스 사례 중심."
-        },
-        {
-          "id": "j17",
-          "emoji": "📦",
-          "title": "국내 배송 발송 목록 뽑기 (한진)",
-          "due": "오늘",
-          "urgency": "urgent",
-          "priority": 1,
-          "detail": "한진 택배 국내 배송 대상 목록 정리 및 발송 준비."
-        },
-        {
-          "id": "j18",
-          "emoji": "💬",
-          "title": "카카오톡 웰컴 메시지 세팅",
-          "due": "이번 주",
-          "urgency": "urgent",
-          "priority": 1,
-          "detail": "카카오 채널 웰컴 메시지 설정."
-        },
-        {
-          "id": "j_shopify_affiliate",
-          "emoji": "🔗",
-          "title": "쇼피파이 어필리에이트 가시화 작업",
-          "due": "오늘",
-          "urgency": "urgent",
-          "priority": 1,
-          "detail": "쇼피파이 어필리에이트 링크 가시화. 개발자 서포트가 필요한 영역이 어디인지 먼저 확인."
-        },
-        {
-          "id": "j_influencer_approach",
-          "emoji": "🇰🇷",
-          "title": "국내 인플루언서 접근 방식 정하기",
-          "due": "오늘",
-          "urgency": "urgent",
-          "priority": 1,
-          "detail": "국내 인플루언서 어떻게 접근할지 방향 설정. 시딩/어필리에이트/유료 노선 중 초기 전략 결정."
-        },
-        {
-          "id": "j_shipping_schedule",
-          "emoji": "🚢",
-          "title": "선적 일정 확인 + 카카오톡 프로세스 정리",
-          "due": "오늘",
-          "urgency": "urgent",
-          "priority": 1,
-          "detail": "선적 직전 프로세스 클로드 정리. 카카오톡에서 관련 내용 뽑아서 정리."
-        },
-        {
-          "id": "j_running_class_spread",
-          "emoji": "🏃",
-          "title": "러닝클래스 뿌리기",
-          "due": "오늘",
-          "urgency": "urgent",
-          "priority": 1,
-          "detail": "DARI CLASS 참가자 모집 콘텐츠 확산. 당근/인스타/카카오 등 채널별 배포."
-        },
-        {
-          "id": "j_aci_register",
-          "emoji": "🛒",
-          "title": "ACI 상품 등록",
-          "due": "이번 주",
-          "urgency": "soon",
-          "priority": 2,
-          "detail": "ACI 플랫폼 상품 등록 처리."
-        },
-        {
-          "id": "j_aligo_fix",
-          "emoji": "🔔",
-          "title": "알리고 수신 안되는 문제 해결",
-          "due": "이번 주",
-          "urgency": "soon",
-          "priority": 2,
-          "detail": "알리고 SMS/알림톡 수신 안되는 문제 원인 파악 및 수정."
-        },
-        {
-          "id": "j_sales_template",
-          "emoji": "📋",
-          "title": "판매처 업로드 템플릿 만들기",
-          "due": "이번 주",
-          "urgency": "soon",
-          "priority": 2,
-          "detail": "각 판매처(스마트스토어/와디즈/쇼피파이 등)에 상품 업로드할 때 쓸 표준 템플릿 제작."
+          "id": "j_group_automation",
+          "emoji": "⚙️",
+          "title": "[묶음] 자동화·시스템",
+          "due": "미정",
+          "urgency": "",
+          "priority": 3,
+          "detail": "① 카카오톡 CS 세팅 구조화\n② 국내 주문건 연동 – 자사 재고 반영 자동화\n③ PI/CI 등 수출 자료 제작 자동화\n④ 크리에이터 확보 국내 바이럴 프로세스 정리\n→ 지금 당장 아닌 것들, 여유 생기면 한 스프린트로 처리."
         },
         {
           "id": "j_may1_picnic",
@@ -337,24 +256,6 @@
           "urgency": "",
           "priority": 3,
           "detail": "5월 1일 망원 빵 피크닉 이벤트 관련 스마트스토어 상품/페이지 업데이트."
-        },
-        {
-          "id": "j_jnk_guide",
-          "emoji": "🎬",
-          "title": "제이앤코슈 숏폼 가이드 – 민형님 요청 정제",
-          "due": "미정",
-          "urgency": "",
-          "priority": 3,
-          "detail": "민형님 요청사항 정제 후 제이앤코슈 숏폼 콘텐츠 가이드 작성."
-        },
-        {
-          "id": "j_jnk_influencer",
-          "emoji": "➕",
-          "title": "제이앤코슈 신규 인플루언서 리스트 추가",
-          "due": "미정",
-          "urgency": "",
-          "priority": 3,
-          "detail": "제이앤코슈 협업 대상 신규 인플루언서 발굴 및 리스트 추가."
         },
         {
           "id": "j_insta_running_img",
@@ -373,6 +274,15 @@
           "urgency": "",
           "priority": 3,
           "detail": "네이버 스마트스토어 업로드 대기 중 상품 처리."
+        },
+        {
+          "id": "j8",
+          "emoji": "🗂️",
+          "title": "카드뉴스형 상세페이지 스킬화",
+          "due": "이번 주",
+          "urgency": "",
+          "priority": 3,
+          "detail": "지금까지 작업한 카드뉴스형 상세페이지 프로세스 스킬 문서화."
         }
       ]
     },
