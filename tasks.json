@@ -177,6 +177,24 @@
           "detail": "선적 직전 프로세스 클로드 정리. 카카오톡에서 관련 내용 뽑아서 정리."
         },
         {
+          "id": "j_dongnam_shipout",
+          "emoji": "📤",
+          "title": "동남아 출고건 처리 (홍콩발)",
+          "due": "오늘",
+          "urgency": "urgent",
+          "priority": 1,
+          "detail": "홍콩 창고 → 동남아 1건 출고 처리. 국가 확인 후 ACI or 홍콩Post e-Express+ 선택."
+        },
+        {
+          "id": "j_kickstarter_shipout",
+          "emoji": "🚀",
+          "title": "[묶음] 킥스타터 출고건 취합 + 운임 확인 (홍콩)",
+          "due": "오늘",
+          "urgency": "urgent",
+          "priority": 1,
+          "detail": "킥스타터 출고 대상 취합 → 홍콩 창고 작업 지시. 운임 먼저 확인 후 진행."
+        },
+        {
           "id": "j_group_sales_channel",
           "emoji": "🛒",
           "title": "[묶음] 판매채널 셋업",
