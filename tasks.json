@@ -122,6 +122,33 @@
           "urgency": "urgent",
           "priority": 1,
           "detail": "이번주 핵심 할일. 채널별 페이지 오픈으로 접근. 대표님 직접 지시 (2026-04-20)."
+        },
+        {
+          "id": "m_hyrox_youtuber",
+          "emoji": "🎬",
+          "title": "하이록스 유튜버 찾아서 컨택하기",
+          "due": "이번 주",
+          "urgency": "soon",
+          "priority": 2,
+          "detail": "HYROX 관련 유튜버 리서치 후 협업 컨택. 어필리에이트 또는 시딩 구조로 접근."
+        },
+        {
+          "id": "m_hyrox_press",
+          "emoji": "📰",
+          "title": "하이록스 코리아 관련기사 내기",
+          "due": "이번 주",
+          "urgency": "soon",
+          "priority": 2,
+          "detail": "HYROX Korea 관련 언론 기사 발행. 보도자료 작성 및 미디어 배포."
+        },
+        {
+          "id": "m_shopify_affiliate",
+          "emoji": "🛒",
+          "title": "쇼피파이 어필리에이트 시스템 구축하기",
+          "due": "이번 주",
+          "urgency": "soon",
+          "priority": 2,
+          "detail": "Shopify 어필리에이트 링크 발급 시스템 구축. 크리에이터별 커미션 구조 세팅."
         }
       ]
     },
@@ -493,6 +520,33 @@
       "urgency": "",
       "priority": 3,
       "detail": "다리클럽 다음 이벤트 기획 및 일정 확정. 담당자 배정 필요."
+    },
+    {
+      "id": "u_grant_logistics",
+      "emoji": "📋",
+      "title": "지원사업 쓰기 — 물류",
+      "due": "미정",
+      "urgency": "soon",
+      "priority": 2,
+      "detail": "물류 관련 지원사업 신청서 작성. 지원사업명 및 마감일 확인 후 진행."
+    },
+    {
+      "id": "u_grant_lasvegas",
+      "emoji": "🎰",
+      "title": "지원사업 쓰기 — 라스베거스",
+      "due": "미정",
+      "urgency": "soon",
+      "priority": 2,
+      "detail": "라스베거스 전시/행사 관련 지원사업 신청서 작성. (예: 해외전시 지원 등)"
+    },
+    {
+      "id": "u_grant_smallbiz",
+      "emoji": "🏪",
+      "title": "지원사업 쓰기 — 소상공인",
+      "due": "미정",
+      "urgency": "soon",
+      "priority": 2,
+      "detail": "소상공인 지원사업 신청서 작성. 소진공 또는 지자체 지원 프로그램 대상."
     }
   ],
   "midterm": [
