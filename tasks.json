@@ -194,6 +194,15 @@
           "urgency": "",
           "priority": 3,
           "detail": "파리 현지 매거진 에디터 + HYROX 스케치 콜라보 캠페인 기획."
+        },
+        {
+          "id": "m_naver_fee_proposal",
+          "emoji": "🛒",
+          "title": "네이버 수수료 제안서 작성",
+          "due": "이번주",
+          "urgency": "soon",
+          "priority": 2,
+          "detail": "타겟 25% 수수료 기준. 조건: 네이버 물류 사용, 광고 소진액 타겟, 네이버 단독 조건 포함한 제안서 작성."
         }
       ]
     },
