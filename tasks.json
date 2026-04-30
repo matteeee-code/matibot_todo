@@ -149,6 +149,51 @@
           "urgency": "soon",
           "priority": 2,
           "detail": "Shopify 어필리에이트 링크 발급 시스템 구축. 크리에이터별 커미션 구조 세팅."
+        },
+        {
+          "id": "m_mexico_partner",
+          "emoji": "🇲🇽",
+          "title": "멕시코 파트너십 제안",
+          "due": "이번주",
+          "urgency": "soon",
+          "priority": 2,
+          "detail": "멕시코 친구에게 파트너십 제안. 최소 파셀 단위로 받는 구조 설계."
+        },
+        {
+          "id": "m_thailand_affiliate",
+          "emoji": "🇹🇭",
+          "title": "태국 어필리에이트 확장",
+          "due": "이번주",
+          "urgency": "soon",
+          "priority": 3,
+          "detail": "태국 시장 어필리에이트 방식으로 먼저 확장 테스트."
+        },
+        {
+          "id": "m_singapore_zoom",
+          "emoji": "🇸🇬",
+          "title": "싱가폴 줌미팅",
+          "due": "이번주",
+          "urgency": "soon",
+          "priority": 2,
+          "detail": "싱가폴 파트너와 줌미팅 일정 잡기."
+        },
+        {
+          "id": "m_uk_coach",
+          "emoji": "🇬🇧",
+          "title": "영국 코치 이어가기",
+          "due": "이번주",
+          "urgency": "",
+          "priority": 3,
+          "detail": "영국 코치 파트너십 연락 이어가기."
+        },
+        {
+          "id": "m_paris_campaign",
+          "emoji": "🇫🇷",
+          "title": "파리 현지 HYROX 캠페인",
+          "due": "기획",
+          "urgency": "",
+          "priority": 3,
+          "detail": "파리 현지 매거진 에디터 + HYROX 스케치 콜라보 캠페인 기획."
         }
       ]
     },
