@@ -25,13 +25,13 @@
           "detail": "망원한강공원. 선착순 20명 모집 중. 당근·스마트스토어 채널 운영."
         },
         {
-          "id": "m3",
-          "emoji": "📱",
-          "title": "인플루언서 아웃리치",
+          "id": "m_channel_page",
+          "emoji": "📄",
+          "title": "채널별 페이지 오픈",
           "due": "이번 주",
-          "urgency": "soon",
-          "priority": 3,
-          "detail": "러닝/도시 크리에이터 DM 발송. Builder가 리스트업 지원."
+          "urgency": "urgent",
+          "priority": 1,
+          "detail": "이번주 핵심 할일. 채널별 페이지 오픈으로 접근. 대표님 직접 지시 (2026-04-20)."
         },
         {
           "id": "m4",
@@ -52,15 +52,6 @@
           "detail": "킥스타터 백커 대상 감사 편지 작성. 배송 박스 동봉용."
         },
         {
-          "id": "m_insta_shop",
-          "emoji": "🛍️",
-          "title": "인스타 샵 연결",
-          "due": "담주",
-          "urgency": "soon",
-          "priority": 3,
-          "detail": "Instagram Shopping 기능 연결 및 설정. 제품 태그 연동."
-        },
-        {
           "id": "m_running2",
           "emoji": "🏃",
           "title": "러닝세션 2회차 준비",
@@ -77,15 +68,6 @@
           "urgency": "soon",
           "priority": 2,
           "detail": "DARI CLASS 운영 관련 준비사항 처리."
-        },
-        {
-          "id": "m_runclub",
-          "emoji": "📸",
-          "title": "런클럽 게시물",
-          "due": "담주",
-          "urgency": "",
-          "priority": 3,
-          "detail": "런클럽 관련 콘텐츠 게시물 작성 및 업로드."
         },
         {
           "id": "m_shopify_seo",
@@ -113,15 +95,6 @@
           "urgency": "urgent",
           "priority": 2,
           "detail": "목요일 페데리코 미팅 — 래퍼(wrapper) 페이지 생성 제안 + 어필리에이트 링크 구조화 논의."
-        },
-        {
-          "id": "m_channel_page",
-          "emoji": "📄",
-          "title": "채널별 페이지 오픈",
-          "due": "이번 주",
-          "urgency": "urgent",
-          "priority": 1,
-          "detail": "이번주 핵심 할일. 채널별 페이지 오픈으로 접근. 대표님 직접 지시 (2026-04-20)."
         },
         {
           "id": "m_hyrox_youtuber",
@@ -160,15 +133,6 @@
           "detail": "멕시코 친구에게 파트너십 제안. 최소 파셀 단위로 받는 구조 설계."
         },
         {
-          "id": "m_thailand_affiliate",
-          "emoji": "🇹🇭",
-          "title": "태국 어필리에이트 확장",
-          "due": "이번주",
-          "urgency": "soon",
-          "priority": 3,
-          "detail": "태국 시장 어필리에이트 방식으로 먼저 확장 테스트."
-        },
-        {
           "id": "m_singapore_zoom",
           "emoji": "🇸🇬",
           "title": "싱가폴 줌미팅",
@@ -176,6 +140,51 @@
           "urgency": "soon",
           "priority": 2,
           "detail": "싱가폴 파트너와 줌미팅 일정 잡기."
+        },
+        {
+          "id": "m_naver_fee_proposal",
+          "emoji": "🛒",
+          "title": "네이버 수수료 제안서 작성",
+          "due": "이번주",
+          "urgency": "soon",
+          "priority": 2,
+          "detail": "타겟 25% 수수료 기준. 조건: 네이버 물류 사용, 광고 소진액 타겟, 네이버 단독 조건 포함한 제안서 작성."
+        },
+        {
+          "id": "m3",
+          "emoji": "📱",
+          "title": "인플루언서 아웃리치",
+          "due": "이번 주",
+          "urgency": "soon",
+          "priority": 3,
+          "detail": "러닝/도시 크리에이터 DM 발송. Builder가 리스트업 지원."
+        },
+        {
+          "id": "m_insta_shop",
+          "emoji": "🛍️",
+          "title": "인스타 샵 연결",
+          "due": "담주",
+          "urgency": "soon",
+          "priority": 3,
+          "detail": "Instagram Shopping 기능 연결 및 설정. 제품 태그 연동."
+        },
+        {
+          "id": "m_runclub",
+          "emoji": "📸",
+          "title": "런클럽 게시물",
+          "due": "담주",
+          "urgency": "",
+          "priority": 3,
+          "detail": "런클럽 관련 콘텐츠 게시물 작성 및 업로드."
+        },
+        {
+          "id": "m_thailand_affiliate",
+          "emoji": "🇹🇭",
+          "title": "태국 어필리에이트 확장",
+          "due": "이번주",
+          "urgency": "soon",
+          "priority": 3,
+          "detail": "태국 시장 어필리에이트 방식으로 먼저 확장 테스트."
         },
         {
           "id": "m_uk_coach",
@@ -194,15 +203,6 @@
           "urgency": "",
           "priority": 3,
           "detail": "파리 현지 매거진 에디터 + HYROX 스케치 콜라보 캠페인 기획."
-        },
-        {
-          "id": "m_naver_fee_proposal",
-          "emoji": "🛒",
-          "title": "네이버 수수료 제안서 작성",
-          "due": "이번주",
-          "urgency": "soon",
-          "priority": 2,
-          "detail": "타겟 25% 수수료 기준. 조건: 네이버 물류 사용, 광고 소진액 타겟, 네이버 단독 조건 포함한 제안서 작성."
         }
       ]
     },
@@ -212,6 +212,33 @@
       "role": "디자인·물류",
       "color": "var(--jiun)",
       "tasks": [
+        {
+          "id": "j_naver_brand_store",
+          "emoji": "🏪",
+          "title": "네이버 브랜드 스토어 등록 프로세스",
+          "due": "우선순위",
+          "urgency": "urgent",
+          "priority": 1,
+          "detail": "① 네이버 파트너 시스템 가입 (partner.navercorp.com)\n② 거래 법인: 네이버 주식회사 체크 (파이낸셜 아님)\n③ 담당자: songyeon.kim@navercorp.com 입력\n④ 전자계약 선택 필수\n→ 브랜드스토어 전환절차(1주 소요) 진행. 엠디 메일 내용 참고."
+        },
+        {
+          "id": "j_naver_n_delivery",
+          "emoji": "🚚",
+          "title": "네이버 N배송 진행 확인",
+          "due": "브랜드스토어와 병행",
+          "urgency": "urgent",
+          "priority": 1,
+          "detail": "네이버 N배송 서비스 가입 및 진행 여부 확인. 브랜드 스토어 등록과 함께 처리."
+        },
+        {
+          "id": "j_sleepysole_tiktok",
+          "emoji": "🎵",
+          "title": "슬리피솔 틱톡 온보딩",
+          "due": "내일(월) 시작",
+          "urgency": "urgent",
+          "priority": 1,
+          "detail": "내일(월요일) 카톡 단톡방 초대 예정. 관련 프로세스 전달 요청. 온보딩 절차 정리 및 공유."
+        },
         {
           "id": "j_group_running_promo",
           "emoji": "🏃",
@@ -330,6 +357,15 @@
           "detail": "플라스크 관련 관세사 연락 및 진행 상황 확인."
         },
         {
+          "id": "j_work_log",
+          "emoji": "📋",
+          "title": "업무 일지 작성 및 공유",
+          "due": "매주",
+          "urgency": "",
+          "priority": 3,
+          "detail": "주간 업무 일지 작성 후 팀 공유. 진행 중인 업무 및 완료 사항 기록."
+        },
+        {
           "id": "j_group_jnk",
           "emoji": "🎬",
           "title": "[묶음] 제이앤코슈 콘텐츠",
@@ -392,6 +428,24 @@
       "color": "var(--new1)",
       "tasks": [
         {
+          "id": "h_wadiz_launch",
+          "emoji": "🚀",
+          "title": "와디즈 5/6 오픈 준비",
+          "due": "5/6",
+          "urgency": "urgent",
+          "priority": 1,
+          "detail": "① 와디즈 상세 페이지 완성 (기존 h_wadiz_page 포함)\n② 기본 광고 소재 준비 (배너·썸네일 등)\n→ 5월 6일 오픈 데드라인."
+        },
+        {
+          "id": "h4",
+          "emoji": "🛍️",
+          "title": "네이버 스마트스토어 상세페이지 개선",
+          "due": "긴급",
+          "urgency": "urgent",
+          "priority": 1,
+          "detail": "스마트스토어 상세페이지 내용 개선 및 업데이트."
+        },
+        {
           "id": "h1",
           "emoji": "📦",
           "title": "킥스타터 배송 준비 — 혜택 콘텐츠 & 출력물 제작",
@@ -408,24 +462,6 @@
           "urgency": "soon",
           "priority": 2,
           "detail": "DARI CLUB 소개 문구 개선 및 완성."
-        },
-        {
-          "id": "h3",
-          "emoji": "📰",
-          "title": "RTR 기사 릴리즈",
-          "due": "미정",
-          "urgency": "",
-          "priority": 3,
-          "detail": "Road Trail Run 기사 배포 및 관리."
-        },
-        {
-          "id": "h4",
-          "emoji": "🛍️",
-          "title": "네이버 스마트스토어 상세페이지 개선",
-          "due": "긴급",
-          "urgency": "urgent",
-          "priority": 1,
-          "detail": "스마트스토어 상세페이지 내용 개선 및 업데이트."
         },
         {
           "id": "h6",
@@ -480,6 +516,15 @@
           "urgency": "soon",
           "priority": 2,
           "detail": "해림님 매일 반복 업무. 발주 현황 확인 및 시스템에 등록. 지운님께 교육 후 수행."
+        },
+        {
+          "id": "h3",
+          "emoji": "📰",
+          "title": "RTR 기사 릴리즈",
+          "due": "미정",
+          "urgency": "",
+          "priority": 3,
+          "detail": "Road Trail Run 기사 배포 및 관리."
         },
         {
           "id": "h_claude_cardnews",
