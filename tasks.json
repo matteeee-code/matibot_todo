@@ -34,6 +34,42 @@
           "detail": "이번주 핵심 할일. 채널별 페이지 오픈으로 접근. 대표님 직접 지시 (2026-04-20)."
         },
         {
+          "id": "m_hyrox_youtuber",
+          "emoji": "🎬",
+          "title": "하이록스 유튜버 찾아서 컨택하기",
+          "due": "다음주",
+          "urgency": "urgent",
+          "priority": 1,
+          "detail": "HYROX 관련 유튜버 리서치 후 협업 컨택. 어필리에이트 또는 시딩 구조로 접근."
+        },
+        {
+          "id": "m_singapore_zoom",
+          "emoji": "🇸🇬",
+          "title": "싱가폴 줌미팅",
+          "due": "다음주",
+          "urgency": "urgent",
+          "priority": 1,
+          "detail": "다음주 줌미팅 어젠다 세팅 후 진행. 협업 방향/물량/채널 합의."
+        },
+        {
+          "id": "m_ops_docs",
+          "emoji": "📋",
+          "title": "운영사 서류 마감",
+          "due": "이번주",
+          "urgency": "urgent",
+          "priority": 1,
+          "detail": "운영사 서류 마감 기한 확인 후 즉시 처리"
+        },
+        {
+          "id": "m_kibo_contact",
+          "emoji": "📞",
+          "title": "기보 지점장 연락 (월요일)",
+          "due": "월요일",
+          "urgency": "urgent",
+          "priority": 1,
+          "detail": "기업은행 기보 지점장에게 월요일 연락. 타이밍 확인."
+        },
+        {
           "id": "m4",
           "emoji": "🎁",
           "title": "메일링 박스 브랜딩",
@@ -97,15 +133,6 @@
           "detail": "목요일 페데리코 미팅 — 래퍼(wrapper) 페이지 생성 제안 + 어필리에이트 링크 구조화 논의."
         },
         {
-          "id": "m_hyrox_youtuber",
-          "emoji": "🎬",
-          "title": "하이록스 유튜버 찾아서 컨택하기",
-          "due": "이번 주",
-          "urgency": "soon",
-          "priority": 2,
-          "detail": "HYROX 관련 유튜버 리서치 후 협업 컨택. 어필리에이트 또는 시딩 구조로 접근."
-        },
-        {
           "id": "m_hyrox_press",
           "emoji": "📰",
           "title": "하이록스 코리아 관련기사 내기",
@@ -118,28 +145,19 @@
           "id": "m_shopify_affiliate",
           "emoji": "🛒",
           "title": "쇼피파이 어필리에이트 시스템 구축하기",
-          "due": "이번 주",
+          "due": "다음주",
           "urgency": "soon",
           "priority": 2,
-          "detail": "Shopify 어필리에이트 링크 발급 시스템 구축. 크리에이터별 커미션 구조 세팅."
+          "detail": "쇼피파이 어필리에이트 시스템 구축 — 해외 인플루언서 연동까지. 하이록스 캠페인 핵심."
         },
         {
           "id": "m_mexico_partner",
           "emoji": "🇲🇽",
           "title": "멕시코 파트너십 제안",
-          "due": "이번주",
+          "due": "다음주",
           "urgency": "soon",
           "priority": 2,
-          "detail": "멕시코 친구에게 파트너십 제안. 최소 파셀 단위로 받는 구조 설계."
-        },
-        {
-          "id": "m_singapore_zoom",
-          "emoji": "🇸🇬",
-          "title": "싱가폴 줌미팅",
-          "due": "이번주",
-          "urgency": "soon",
-          "priority": 2,
-          "detail": "싱가폴 파트너와 줌미팅 일정 잡기."
+          "detail": "멕시코 파트너 친구에게 협업 내용 구체화. 파리에디터처럼 명확하게 제안서 전달."
         },
         {
           "id": "m_naver_fee_proposal",
@@ -149,6 +167,168 @@
           "urgency": "soon",
           "priority": 2,
           "detail": "타겟 25% 수수료 기준. 조건: 네이버 물류 사용, 광고 소진액 타겟, 네이버 단독 조건 포함한 제안서 작성."
+        },
+        {
+          "id": "m_wadiz_ad",
+          "emoji": "📢",
+          "title": "와디즈 광고 소재 디자인",
+          "due": "다음주",
+          "urgency": "soon",
+          "priority": 2,
+          "detail": "카드뉴스 / 단장(메인배너) / 쇼츠 — 와디즈 캠페인용 소재 제작 시작"
+        },
+        {
+          "id": "m_hyrox_domestic",
+          "emoji": "🏅",
+          "title": "하이록스 국내 확산 전략 수립",
+          "due": "다음주",
+          "urgency": "soon",
+          "priority": 2,
+          "detail": "국내에서 더 빠르게 확산하는 방법 고민. 커뮤니티·SNS·미디어 채널 믹스 전략."
+        },
+        {
+          "id": "m_hyrox_intl_image",
+          "emoji": "🌏",
+          "title": "해외 인플루언서 하이록스 이미지 콘텐츠 기획",
+          "due": "다음주",
+          "urgency": "soon",
+          "priority": 2,
+          "detail": "해외 인플루언서 대상 이미지 콘텐츠 방향 기획 및 가이드라인 작성"
+        },
+        {
+          "id": "m_naver_promo",
+          "emoji": "🛍️",
+          "title": "네이버 N배송 이후 프로모션 가이드 준비",
+          "due": "다음주",
+          "urgency": "soon",
+          "priority": 2,
+          "detail": "N배송 이후 프로모션 전략 정리 — 혜택/노출/전환 가이드 작성"
+        },
+        {
+          "id": "m_naver_keyword",
+          "emoji": "🔑",
+          "title": "네이버 키워드 기본 세팅",
+          "due": "다음주",
+          "urgency": "soon",
+          "priority": 2,
+          "detail": "브랜드스토어 + 스마트스토어 기본 키워드 세팅. 5월 KPI: 하루 10개 출고 목표"
+        },
+        {
+          "id": "m_naver_review100",
+          "emoji": "⭐",
+          "title": "네이버 리뷰 100개 달성 전략",
+          "due": "5월 중",
+          "urgency": "soon",
+          "priority": 2,
+          "detail": "5월 목표: 네이버 리뷰 100개 빠르게 달성. 리뷰 유도 방법/타이밍 세팅."
+        },
+        {
+          "id": "m_outsource_resole",
+          "emoji": "👟",
+          "title": "리솔 외주 시작",
+          "due": "다음주",
+          "urgency": "soon",
+          "priority": 2,
+          "detail": "리솔 외주 작업 킥오프. 업체 컨택 및 스펙 전달."
+        },
+        {
+          "id": "m_outsource_creative",
+          "emoji": "🎨",
+          "title": "크리에이팁 색상 결정",
+          "due": "다음주",
+          "urgency": "soon",
+          "priority": 2,
+          "detail": "크리에이팁(Creative Tip) 외주 — 색상 확정 및 디렉션 전달"
+        },
+        {
+          "id": "m_outsource_jnk",
+          "emoji": "🤝",
+          "title": "제이앤코슈 외주 마무리",
+          "due": "다음주",
+          "urgency": "soon",
+          "priority": 2,
+          "detail": "제이앤코슈 진행 중인 외주 건 최종 마무리 처리"
+        },
+        {
+          "id": "m_magazine_edit",
+          "emoji": "📝",
+          "title": "DARI 매거진 편집 본격 시작",
+          "due": "다음주",
+          "urgency": "soon",
+          "priority": 2,
+          "detail": "매거진 편집 본격화. 원고 정리·흐름 잡기"
+        },
+        {
+          "id": "m_magazine_image",
+          "emoji": "🖼️",
+          "title": "매거진 이미지 셀렉",
+          "due": "다음주",
+          "urgency": "soon",
+          "priority": 2,
+          "detail": "매거진 사용할 이미지 최종 선별 작업"
+        },
+        {
+          "id": "m_sample_refine",
+          "emoji": "🔬",
+          "title": "다음 샘플 뾰족하게 다듬기",
+          "due": "다음주",
+          "urgency": "soon",
+          "priority": 2,
+          "detail": "현재 부족한 부분 되짚고, 다음 샘플 스펙 정교화"
+        },
+        {
+          "id": "m_new_material",
+          "emoji": "🧪",
+          "title": "신생 소재 업체 미팅",
+          "due": "다음주",
+          "urgency": "soon",
+          "priority": 2,
+          "detail": "다음주 신생 소재 업체 미팅. 어떤 소재인지 확인 및 적용 가능성 검토."
+        },
+        {
+          "id": "m_china_qc",
+          "emoji": "✈️",
+          "title": "5월말 중국 방문 — 미드솔 1k QC",
+          "due": "5월말",
+          "urgency": "soon",
+          "priority": 2,
+          "detail": "미드솔 1,000족 생산 QC. 이번 부족한 부분 재검토 + 내년 자동화 세팅 시작."
+        },
+        {
+          "id": "m_wings_check",
+          "emoji": "🏆",
+          "title": "윙스 발표 체크",
+          "due": "다음주",
+          "urgency": "soon",
+          "priority": 2,
+          "detail": "윙스(Wings) 프로그램 발표 일정 및 결과 확인"
+        },
+        {
+          "id": "m_dankuk",
+          "emoji": "🎓",
+          "title": "단국대 자가진단표 작성",
+          "due": "다음주",
+          "urgency": "soon",
+          "priority": 2,
+          "detail": "단국대 지원 관련 자가진단표 작성 및 제출"
+        },
+        {
+          "id": "m_taiwan_influencer",
+          "emoji": "🇹🇼",
+          "title": "대만 인플루언서 협업 내용 전달",
+          "due": "다음주",
+          "urgency": "soon",
+          "priority": 2,
+          "detail": "대만 인플루언서에게 협업 조건·콘텐츠 방향 전달"
+        },
+        {
+          "id": "m_singapore_agenda",
+          "emoji": "🇸🇬",
+          "title": "싱가폴 줌미팅 어젠다 세팅",
+          "due": "다음주",
+          "urgency": "soon",
+          "priority": 2,
+          "detail": "다음주 싱가폴 줌미팅 — 어젠다 미리 정리해서 공유"
         },
         {
           "id": "m3",
@@ -203,6 +383,33 @@
           "urgency": "",
           "priority": 3,
           "detail": "파리 현지 매거진 에디터 + HYROX 스케치 콜라보 캠페인 기획."
+        },
+        {
+          "id": "m_outsource_cn_system",
+          "emoji": "🇨🇳",
+          "title": "시스템 중국 제안 준비",
+          "due": "다음주",
+          "urgency": "normal",
+          "priority": 3,
+          "detail": "중국 시스템 제안서 준비. 어떤 내용으로 제안할지 정리."
+        },
+        {
+          "id": "m_magazine_route",
+          "emoji": "🗺️",
+          "title": "매거진 추천 동선 만들기",
+          "due": "다음주",
+          "urgency": "normal",
+          "priority": 3,
+          "detail": "독자 동선 기획 — 섹션 흐름/추천 경로 설계"
+        },
+        {
+          "id": "m_leather_test",
+          "emoji": "🐄",
+          "title": "가죽 신규 회사 테스트",
+          "due": "다음주",
+          "urgency": "normal",
+          "priority": 3,
+          "detail": "새 가죽 공급사 후보 테스트 — 소재 샘플 리뷰"
         }
       ]
     },
@@ -355,6 +562,15 @@
           "urgency": "soon",
           "priority": 2,
           "detail": "플라스크 관련 관세사 연락 및 진행 상황 확인."
+        },
+        {
+          "id": "j_aci_shipping",
+          "emoji": "🚢",
+          "title": "ACI 홍콩 — 배로 12개 단위 출고 가능한지 확인",
+          "due": "다음주",
+          "urgency": "soon",
+          "priority": 2,
+          "detail": "배로 보낼 경우 12개 단위로 ACI 홍콩 물류에서 나가는지 확인 필요 (대표님 지시)"
         },
         {
           "id": "j_work_log",
@@ -708,6 +924,22 @@
       "startDate": "2026-04",
       "endDate": "미정",
       "detail": "현재 킥스타터용으로 기재된 문구를 정규 판매용으로 수정 필요."
+    },
+    {
+      "id": "mid_hyrox_nov",
+      "emoji": "👟",
+      "title": "하이록스 전용화 11월 출시 (ISPO 수상 목표)",
+      "assignee": "Matt",
+      "priority": 2,
+      "detail": "11월 HYROX 전용화 출시. ISPO 수상 목표로 로드맵 수립."
+    },
+    {
+      "id": "mid_automation_2027",
+      "emoji": "🤖",
+      "title": "내년 자동화 도입 목표 세팅",
+      "assignee": "Matt",
+      "priority": 3,
+      "detail": "2027년 생산 자동화 도입을 위한 사전 세팅 및 목표 정의"
     }
   ]
 }
