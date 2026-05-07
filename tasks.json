@@ -786,6 +786,15 @@
           "urgency": "soon",
           "priority": 2,
           "detail": "와디즈에서 베이직스 검색 → 새소식란 파악 (오픈예정~본펀딩~종료까지 서포터 소통 창구). 어떤 역할인지 먼저 파악 후 차주 업로드 스케줄 논의. (대표님 4/30 지시)"
+        },
+        {
+          "id": "h_sticker_print",
+          "emoji": "🖨️",
+          "title": "스티커 출력 업체 알아보고 최소단위 출력",
+          "due": "이번 주",
+          "urgency": "soon",
+          "priority": 2,
+          "detail": "무코팅아트지 소재. 구글 드라이브 파일 참조 (https://drive.google.com/drive/folders/1vjNBOQYg60Xu2CekBY1Uv2JDALuWOiES). 최소 주문수량으로 출력. 일러스트 사용법은 대표님께 확인."
         }
       ]
     }
